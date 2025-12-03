@@ -1,0 +1,6 @@
+{
+    "repositories": {
+        "git": "nixpkgs.git.aarch64-darwin",
+        "hello": "nixpkgs.hello.x86_64-linux"
+    }
+}

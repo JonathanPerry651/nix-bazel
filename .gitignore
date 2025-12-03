@@ -1,0 +1,4 @@
+bazel-*
+nix-bazel-fetch
+nix-bazel-resolve
+nix-bazel-generate
