@@ -152,7 +152,7 @@
   "moduleExtensions": {
     "//:nix_package.bzl%nix_extension": {
       "general": {
-        "bzlTransitiveDigest": "c/rHafpyTxUa6MHEaYeBZu7VjFUT3+FuwchiLF21Zlo=",
+        "bzlTransitiveDigest": "exsBVEMuFoPIsGLlKf4SKEcoGoLYeYG7pn9Ju8/zMKE=",
         "usagesDigest": "BennXpCrphZdjErgqKky1eHY0mZaYoLjMn30GhOOGT0=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},

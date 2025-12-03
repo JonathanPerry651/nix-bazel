@@ -53,9 +53,7 @@ func (f *Fetcher) FetchAllFromLock(lock *Lockfile) error {
 		if err := f.downloadAndUnpack(context.Background(), info); err != nil {
 			return fmt.Errorf("failed to fetch %s: %w", info.StorePath, err)
 		}
-		if err := f.patchBinaries(info); err != nil {
-			fmt.Printf("Warning: patching failed for %s: %v\n", info.StorePath, err)
-		}
+
 	}
 
 	return f.generateBuildFiles(*lock, uniquePaths, "")
@@ -97,9 +95,7 @@ func (f *Fetcher) FetchFromLock(lock *Lockfile, repoName string) error {
 		if err := f.downloadAndUnpack(context.Background(), info); err != nil {
 			return err
 		}
-		if err := f.patchBinaries(info); err != nil {
-			fmt.Printf("Warning: patching failed for %s: %v\n", path, err)
-		}
+
 	}
 
 	// Generate BUILD file for the root package
@@ -138,11 +134,6 @@ func (f *Fetcher) Fetch(ctx context.Context, storePathOrHash string) error {
 	// Download and unpack NAR
 	if err := f.downloadAndUnpack(ctx, narInfo); err != nil {
 		return err
-	}
-
-	// Patch ELF binaries
-	if err := f.patchBinaries(narInfo); err != nil {
-		fmt.Printf("Warning: patching failed: %v\n", err)
 	}
 
 	// Generate BUILD file
@@ -328,51 +319,7 @@ func (f *Fetcher) UnpackAndPatch(archivePath, storePath string, refs []string) e
 		return err
 	}
 
-	// Patch binaries
-	info := &NarInfo{
-		StorePath:  actualStoreDir,
-		References: refs,
-	}
-	return f.patchBinaries(info)
-}
-
-func (f *Fetcher) patchBinaries(info *NarInfo) error {
-	storeName := filepath.Base(info.StorePath)
-	destDir := filepath.Join(f.outDir, storeName)
-
-	// Construct RPATH
-	var rpaths []string
-	for _, ref := range info.References {
-		refName := filepath.Base(ref)
-		// $ORIGIN/../<ref>/lib
-		rpaths = append(rpaths, fmt.Sprintf("$ORIGIN/../%s/lib", refName))
-		rpaths = append(rpaths, fmt.Sprintf("$ORIGIN/../%s/lib64", refName))
-	}
-	rpathStr := strings.Join(rpaths, ":")
-
-	return filepath.Walk(destDir, func(path string, info fs.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-		if !info.Mode().IsRegular() {
-			return nil
-		}
-		// Check if executable or shared lib
-		// Simple check: executable bit or .so extension
-		isElf := (info.Mode()&0111 != 0) || strings.HasSuffix(path, ".so") || strings.Contains(path, ".so.")
-		if !isElf {
-			return nil
-		}
-
-		// Run patchelf
-		fmt.Printf("Patching %s with RPATH %s\n", path, rpathStr)
-		cmd := exec.Command("patchelf", "--set-rpath", rpathStr, path)
-		if output, err := cmd.CombinedOutput(); err != nil {
-			// Ignore errors for now as not all files are valid ELFs or writable
-			fmt.Printf("patchelf failed for %s: %v %s\n", path, err, output)
-		}
-		return nil
-	})
+	return nil
 }
 
 func (f *Fetcher) resolveHydra(ctx context.Context, packageId, channel string) (string, error) {

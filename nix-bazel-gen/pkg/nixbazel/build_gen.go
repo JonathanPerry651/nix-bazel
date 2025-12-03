@@ -50,10 +50,12 @@ func (f *Fetcher) generateBuildFiles(lock Lockfile, uniquePaths map[string]*NarI
 			return err
 		}
 
+		fmt.Fprintf(file, "load(\"@nix_deps//:patchelf.bzl\", \"nix_patchelf\")\n\n")
 		fmt.Fprintf(file, "package(default_visibility = [\"//visibility:public\"])\n\n")
 
 		// Calculate dependencies (other store paths)
 		var deps []string
+		var depNames []string
 		for _, ref := range info.References {
 			refName := filepath.Base(ref)
 			if refName == storeName {
@@ -61,6 +63,7 @@ func (f *Fetcher) generateBuildFiles(lock Lockfile, uniquePaths map[string]*NarI
 			}
 			// Dependency format: // <refName> : <refName>
 			deps = append(deps, fmt.Sprintf("\"//%s:%s\"", refName, refName))
+			depNames = append(depNames, fmt.Sprintf("\"%s\"", refName))
 		}
 
 		// Filegroup for the whole store path
@@ -82,10 +85,14 @@ func (f *Fetcher) generateBuildFiles(lock Lockfile, uniquePaths map[string]*NarI
 					// Target name: binName (e.g. git)
 					// It's safe to use binName because storeName is usually long and distinct
 
-					fmt.Fprintf(file, "sh_binary(\n")
+					fmt.Fprintf(file, "nix_patchelf(\n")
 					fmt.Fprintf(file, "    name = \"%s\",\n", binName)
-					fmt.Fprintf(file, "    srcs = [\"bin/%s\"],\n", binName)
+					fmt.Fprintf(file, "    src = \"bin/%s\",\n", binName)
 					fmt.Fprintf(file, "    data = [\":%s\"],\n", storeName)
+					if len(deps) > 0 {
+						fmt.Fprintf(file, "    deps = [%s],\n", strings.Join(deps, ", "))
+						fmt.Fprintf(file, "    nix_store_names = [%s],\n", strings.Join(depNames, ", "))
+					}
 					fmt.Fprintf(file, ")\n\n")
 				}
 			}
@@ -189,6 +196,7 @@ func (f *Fetcher) generateBuildFile(info *NarInfo) error {
 	}
 	defer file.Close()
 
+	fmt.Fprintf(file, "load(\"@nix_deps//:patchelf.bzl\", \"nix_patchelf\")\n\n")
 	fmt.Fprintf(file, "package(default_visibility = [\"//visibility:public\"])\n\n")
 
 	// Expose all files
@@ -205,9 +213,9 @@ func (f *Fetcher) generateBuildFile(info *NarInfo) error {
 				// path relative to repo root: <store_name>/bin/<name>
 				relPath := filepath.Join(storeName, "bin", binName)
 
-				fmt.Fprintf(file, "sh_binary(\n")
+				fmt.Fprintf(file, "nix_patchelf(\n")
 				fmt.Fprintf(file, "    name = \"%s\",\n", binName)
-				fmt.Fprintf(file, "    srcs = [\"%s\"],\n", relPath)
+				fmt.Fprintf(file, "    src = \"%s\",\n", relPath)
 				// We need to include all files as data so it can find libs/resources
 				fmt.Fprintf(file, "    data = [\":all_files\"],\n")
 				fmt.Fprintf(file, ")\n\n")

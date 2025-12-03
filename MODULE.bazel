@@ -12,3 +12,8 @@ nix.packages(lockfile = "//:nix_deps.lock.json")
 nix.package(name = "git", package = "nixpkgs.git.aarch64-darwin")
 nix.package(name = "hello", package = "nixpkgs.hello.x86_64-linux")
 use_repo(nix, "nix_deps")
+
+bazel_dep(name = "platforms", version = "0.0.10")
+
+
+

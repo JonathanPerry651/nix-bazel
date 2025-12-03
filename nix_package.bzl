@@ -56,6 +56,9 @@ def _nix_package_impl(repository_ctx):
             if result.return_code != 0:
                 fail("Failed to generate BUILD files: \n%s\n%s" % (result.stdout, result.stderr))
 
+        # Copy patchelf.bzl
+        repository_ctx.symlink(Label("//:patchelf.bzl"), "patchelf.bzl")
+
     else:
         fail("Lockfile is required for this mode")
 
