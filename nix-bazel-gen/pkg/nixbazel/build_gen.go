@@ -35,7 +35,7 @@ func (f *Fetcher) GenerateBuildFiles(lockFile, channel string) error {
 
 func (f *Fetcher) generateBuildFiles(lock Lockfile, uniquePaths map[string]*NarInfo, channel string) error {
 	// 1. Generate per-package BUILD files
-	for storePath, info := range uniquePaths {
+	for storePath := range uniquePaths {
 		storeName := filepath.Base(storePath)
 		packageDir := filepath.Join(f.outDir, storeName)
 
@@ -53,14 +53,14 @@ func (f *Fetcher) generateBuildFiles(lock Lockfile, uniquePaths map[string]*NarI
 		fmt.Fprintf(file, "load(\"@nix_deps//:patchelf.bzl\", \"nix_patchelf\")\n\n")
 		fmt.Fprintf(file, "package(default_visibility = [\"//visibility:public\"])\n\n")
 
-		// Calculate dependencies (other store paths)
+		// Calculate dependencies (transitive closure)
 		var deps []string
 		var depNames []string
-		for _, ref := range info.References {
+
+		transitiveDeps := getTransitiveClosure(storePath, lock.Packages)
+
+		for _, ref := range transitiveDeps {
 			refName := filepath.Base(ref)
-			if refName == storeName {
-				continue // Self-reference
-			}
 			// Dependency format: // <refName> : <refName>
 			deps = append(deps, fmt.Sprintf("\"//%s:%s\"", refName, refName))
 			depNames = append(depNames, fmt.Sprintf("\"%s\"", refName))
@@ -112,20 +112,29 @@ func (f *Fetcher) generateBuildFiles(lock Lockfile, uniquePaths map[string]*NarI
 
 	fmt.Fprintf(file, "package(default_visibility = [\"//visibility:public\"])\n\n")
 
-	for repoName, storePath := range lock.Repositories {
+	for repoName, repoLock := range lock.Repositories {
+		storePath := repoLock.StorePath
 		storeName := filepath.Base(storePath)
 
 		// Alias for the filegroup
 		// If the user asked for "git", they might expect the binary "git" if it exists,
 		// or the filegroup if it's a library.
-		// Let's check if a binary with the same name exists in that package.
 
 		target := fmt.Sprintf("//%s:%s", storeName, storeName) // Default to filegroup
 
-		binPath := filepath.Join(f.outDir, storeName, "bin", repoName)
-		if _, err := os.Stat(binPath); err == nil {
-			// Binary exists, alias to it
-			target = fmt.Sprintf("//%s:%s", storeName, repoName)
+		if repoLock.Entrypoint != "" {
+			// User specified entrypoint, use it
+			// We assume the entrypoint binary name matches the basename of the entrypoint path
+			// e.g. bin/git -> git
+			entrypointName := filepath.Base(repoLock.Entrypoint)
+			target = fmt.Sprintf("//%s:%s", storeName, entrypointName)
+		} else {
+			// Let's check if a binary with the same name exists in that package.
+			binPath := filepath.Join(f.outDir, storeName, "bin", repoName)
+			if _, err := os.Stat(binPath); err == nil {
+				// Binary exists, alias to it
+				target = fmt.Sprintf("//%s:%s", storeName, repoName)
+			}
 		}
 
 		fmt.Fprintf(file, "alias(\n")
@@ -180,6 +189,34 @@ fi
 	}
 
 	return nil
+}
+
+func getTransitiveClosure(root string, packages map[string]ClosureNode) []string {
+	closure := make(map[string]bool)
+	var traverse func(string)
+	traverse = func(path string) {
+		if closure[path] {
+			return
+		}
+		closure[path] = true
+		node, ok := packages[path]
+		if !ok {
+			return
+		}
+		for _, ref := range node.References {
+			fullRef := "/nix/store/" + ref
+			traverse(fullRef)
+		}
+	}
+	traverse(root)
+
+	var result []string
+	for path := range closure {
+		if path != root {
+			result = append(result, path)
+		}
+	}
+	return result
 }
 
 func (f *Fetcher) generateBuildFile(info *NarInfo) error {

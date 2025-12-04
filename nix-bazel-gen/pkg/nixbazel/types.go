@@ -4,13 +4,23 @@ const defaultCacheURL = "https://cache.nixos.org"
 
 // Config represents nix_deps.yaml
 type Config struct {
-	Repositories map[string]string `json:"repositories"`
+	Repositories map[string]RepositoryConfig `json:"repositories"`
+}
+
+type RepositoryConfig struct {
+	Package    string `json:"package"`
+	Entrypoint string `json:"entrypoint,omitempty"`
 }
 
 // Lockfile represents nix_deps.lock.json
 type Lockfile struct {
-	Repositories map[string]string      `json:"repositories"` // name -> store path
-	Packages     map[string]ClosureNode `json:"packages"`     // store path -> node
+	Repositories map[string]RepositoryLock `json:"repositories"` // name -> lock info
+	Packages     map[string]ClosureNode    `json:"packages"`     // store path -> node
+}
+
+type RepositoryLock struct {
+	StorePath  string `json:"storePath"`
+	Entrypoint string `json:"entrypoint,omitempty"`
 }
 
 type ClosureNode struct {

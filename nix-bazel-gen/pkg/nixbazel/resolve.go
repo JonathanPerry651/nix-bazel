@@ -20,20 +20,20 @@ func RunResolve(configFile, lockFile, channel string) error {
 
 	f := NewFetcher(defaultCacheURL, "")
 	lock := Lockfile{
-		Repositories: make(map[string]string),
+		Repositories: make(map[string]RepositoryLock),
 		Packages:     make(map[string]ClosureNode),
 	}
 
-	for name, id := range config.Repositories {
-		fmt.Printf("Resolving %s (%s)...\n", name, id)
+	for name, config := range config.Repositories {
+		fmt.Printf("Resolving %s (%s)...\n", name, config.Package)
 
 		// 1. Resolve to store path (Hydra or direct hash)
-		hash := extractHash(id)
+		hash := extractHash(config.Package)
 		storePath := ""
 		if hash == "" {
-			path, err := f.resolveHydra(context.Background(), id, channel)
+			path, err := f.resolveHydra(context.Background(), config.Package, channel)
 			if err != nil {
-				return fmt.Errorf("failed to resolve %s: %w", id, err)
+				return fmt.Errorf("failed to resolve %s: %w", config.Package, err)
 			}
 			storePath = path
 			hash = extractHash(storePath)
@@ -43,14 +43,17 @@ func RunResolve(configFile, lockFile, channel string) error {
 		// We pass the global packages map to resolveClosure to populate it directly
 		rootInfo, err := f.resolveClosure(context.Background(), hash, lock.Packages)
 		if err != nil {
-			return fmt.Errorf("failed to resolve closure for %s: %w", id, err)
+			return fmt.Errorf("failed to resolve closure for %s: %w", config.Package, err)
 		}
 
 		if storePath == "" {
 			storePath = rootInfo.StorePath
 		}
 
-		lock.Repositories[name] = storePath
+		lock.Repositories[name] = RepositoryLock{
+			StorePath:  storePath,
+			Entrypoint: config.Entrypoint,
+		}
 	}
 
 	// Write lockfile

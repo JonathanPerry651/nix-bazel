@@ -67,7 +67,10 @@ sh_test(
 2.  **Lockfile Generation**: It constructs a flattened dependency graph and writes it to `nix_deps.lock.json`.
 3.  **Fetching**: During the build, the `nix_package` repository rule invokes `nix-bazel-fetch` (or `nix-bazel-generate` for build files) to download the NAR archives specified in the lockfile.
 4.  **Unpacking & Patching**: The archives are unpacked into the Bazel external repository. On Linux, `patchelf` is used to set the `RPATH` of binaries to `$ORIGIN/...`, allowing them to find their libraries relative to themselves.
+    *   **Transitive RPATHs**: The tool calculates the full transitive closure of dependencies for each package and adds them to the `RPATH`. This ensures that binaries can find all required shared libraries, even those not directly referenced by the package itself (e.g., `libgcc_s.so.1` provided by `gcc-libgcc`).
+    *   **Wrapper Script**: A wrapper script is generated for each binary. This script explicitly invokes the dynamic linker (loader) found in the dependencies (e.g., `glibc`). It handles path resolution differences between `bazel run` (where dependencies are in runfiles) and `bazel test` (where dependencies are relative), ensuring robust execution in both environments.
 5.  **Build Generation**: A `BUILD.bazel` file is generated for each package, exposing its files and binaries.
+    *   **Entrypoints**: If an `entrypoint` is specified in `MODULE.bazel`, an alias is created in the root `BUILD.bazel` file pointing to that specific binary. This allows `bazel run @nix_deps//:package_name` to execute the correct binary directly.
 
 ## Directory Structure
 

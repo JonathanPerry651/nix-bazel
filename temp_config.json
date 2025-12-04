@@ -1,6 +1,11 @@
 {
     "repositories": {
-        "git": "nixpkgs.git.aarch64-darwin",
-        "hello": "nixpkgs.hello.x86_64-linux"
+        "git": {
+            "package": "nixpkgs.git.x86_64-linux",
+            "entrypoint": "bin/git"
+        },
+        "hello": {
+            "package": "nixpkgs.hello.x86_64-linux"
+        }
     }
 }

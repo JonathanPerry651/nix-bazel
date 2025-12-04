@@ -3,14 +3,15 @@ set -e
 
 # Find the git binary in the runfiles
 echo "Current directory: $(pwd)"
-echo "Listing all files in runfiles root (..):"
-find -L .. -maxdepth 4
+# Find the git binary in the runfiles
+echo "Current directory: $(pwd)"
 
-GIT_BIN=$(find -L .. -name git -type f | grep "/bin/git" | head -n 1)
-# Also try finding the wrapper script which might be just "git"
-if [ -z "$GIT_BIN" ]; then
-  GIT_BIN=$(find -L .. -name git -type f | grep "external/git/git" | head -n 1)
+if [ -z "$1" ]; then
+  echo "Error: Path to git binary must be provided as the first argument"
+  exit 1
 fi
+
+GIT_BIN="$1"
 
 if [ -z "$GIT_BIN" ]; then
   echo "Error: Could not find 'git' binary"
@@ -24,6 +25,13 @@ echo "Checking file type..."
 file "$GIT_BIN"
 
 echo "Success: Binary found."
-# Note: We cannot execute it on macOS because we don't patch Mach-O RPATHs yet,
-# and it depends on absolute paths in /nix/store.
-# OUTPUT=$($GIT_BIN --version)
+echo "Executing binary..."
+OUTPUT=$($GIT_BIN --version)
+echo "Output: $OUTPUT"
+
+if [[ "$OUTPUT" == *"git version"* ]]; then
+  echo "Success: Git executed successfully"
+else
+  echo "Error: Git execution failed or unexpected output"
+  exit 1
+fi

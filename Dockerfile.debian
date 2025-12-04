@@ -1,0 +1,30 @@
+FROM debian:bullseye
+
+# Prevent interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    gnupg \
+    patchelf \
+    xz-utils \
+    build-essential \
+    python3 \
+    file \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Go
+RUN curl -L https://go.dev/dl/go1.21.5.linux-amd64.tar.gz | tar -C /usr/local -xz
+ENV PATH=$PATH:/usr/local/go/bin
+
+# Install Bazelisk (as bazel)
+RUN curl -L https://github.com/bazelbuild/bazelisk/releases/download/v1.19.0/bazelisk-linux-amd64 -o /usr/local/bin/bazel && \
+    chmod +x /usr/local/bin/bazel
+
+# Set workspace directory
+WORKDIR /workspace
+
+# Default command
+CMD ["bash"]

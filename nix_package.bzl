@@ -89,7 +89,10 @@ def _nix_extension_impl(module_ctx):
                 channel = tag.channel
         
         for pkg in mod.tags.package:
-            packages[pkg.name] = pkg.package
+            packages[pkg.name] = {
+                "package": pkg.package,
+                "entrypoint": pkg.entrypoint,
+            }
 
     # Serialize packages to JSON
     packages_json = json.encode({"repositories": packages})
@@ -115,6 +118,7 @@ nix_extension = module_extension(
             attrs = {
                 "name": attr.string(mandatory = True),
                 "package": attr.string(mandatory = True),
+                "entrypoint": attr.string(mandatory = False),
             },
         ),
     },

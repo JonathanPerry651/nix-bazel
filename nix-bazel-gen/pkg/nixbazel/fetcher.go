@@ -61,10 +61,11 @@ func (f *Fetcher) FetchAllFromLock(lock *Lockfile) error {
 
 // FetchFromLock downloads and unpacks a specific repository from the lockfile
 func (f *Fetcher) FetchFromLock(lock *Lockfile, repoName string) error {
-	storePath, ok := lock.Repositories[repoName]
+	repoLock, ok := lock.Repositories[repoName]
 	if !ok {
 		return fmt.Errorf("repository %s not found in lockfile", repoName)
 	}
+	storePath := repoLock.StorePath
 
 	// Traverse to find the closure
 	closure := make(map[string]ClosureNode)
