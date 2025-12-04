@@ -47,6 +47,8 @@ def _nix_package_impl(repository_ctx):
 
         # 4. Generate BUILD files
         if repository_ctx.attr.packages_json:
+            repository_ctx.file("packages.json", repository_ctx.attr.packages_json)
+            
             # Generate BUILD files
             args = [generate_tool, "--lockfile", lockfile_path, "--out", repository_ctx.path(".")]
             if repository_ctx.attr.channel:

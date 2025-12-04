@@ -1,11 +1,23 @@
 {
   "repositories": {
+    "curl": {
+      "storePath": "/nix/store/8idis3j5l13c3x74jl8xly0k4qyk9mx6-curl-8.17.0",
+      "entrypoint": "bin/curl"
+    },
     "git": {
       "storePath": "/nix/store/4qhdhmi7pzgad0zfd7c5lsg235mbf9hv-git-2.51.2",
       "entrypoint": "bin/git"
     },
     "hello": {
       "storePath": "/nix/store/2bcv91i8fahqghn8dmyr791iaycbsjdd-hello-2.12.2"
+    },
+    "imagemagick": {
+      "storePath": "/nix/store/xdckbi96kj51j8qxbj2m6bag3v83hn8q-imagemagick-7.1.2-8",
+      "entrypoint": "bin/magick"
+    },
+    "python3": {
+      "storePath": "/nix/store/3lll9y925zz9393sa59h653xik66srjb-python3-3.13.9",
+      "entrypoint": "bin/python3"
     }
   },
   "packages": {
@@ -18,6 +30,25 @@
       "fileHash": "ea9048e24858c6c354b0184ba38f1723e3bc6aa900d1bf438b6775ef467e9c55",
       "fileSize": 70984,
       "references": [
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/01ddsmlfxa22al7yxasdj8rvm72b275m-libheif-1.20.2-lib": {
+      "url": "nar/0lnrnjdi9dfpb06rmi5k85mjbfhk3wmm96gkwn752cbb95ivf7dj.nar.xz",
+      "hash": "01ddsmlfxa22al7yxasdj8rvm72b275m",
+      "size": 0,
+      "narHash": "b351b1c5537cdaa71eb658dfa583cd0861284f489289b9872c05829fb7cbdde5",
+      "narSize": 2450728,
+      "fileHash": "b21db763496b31518ee5f399542b1f13ba256b41b3c49a0d58d7b5149bb4d952",
+      "fileSize": 657824,
+      "references": [
+        "01ddsmlfxa22al7yxasdj8rvm72b275m-libheif-1.20.2-lib",
+        "06wdi73dwz113fqkpp26x0dr09rnv540-libde265-1.0.16",
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "cfnas28yx8ni9izjmk3f9hgwzin798nl-gdk-pixbuf-2.44.4",
+        "qnb2acprbpaqlvsdfmk2q3n09xp5zb5g-x265-4.1",
+        "vbvbbi2r5s4wsxsmj2fyflrldzb52dmb-libaom-3.12.1",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
@@ -34,6 +65,70 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/06wdi73dwz113fqkpp26x0dr09rnv540-libde265-1.0.16": {
+      "url": "nar/0fscjg7pcqbnjcqn9a0d5hyxx4jjbf101qi14i18hn0f1542fcc9.nar.xz",
+      "hash": "06wdi73dwz113fqkpp26x0dr09rnv540",
+      "size": 0,
+      "narHash": "34ce23aec661a3ab7e4175898ecca5b8d50aafb642acae22a64d5ed3b52504e5",
+      "narSize": 1314672,
+      "fileHash": "89312748090e5888422421e200825b5292de3d2c0da8643193766176cf934c3b",
+      "fileSize": 380268,
+      "references": [
+        "06wdi73dwz113fqkpp26x0dr09rnv540-libde265-1.0.16",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/0ci3da6db19gckz0i5j3br992cspvlz1-cairo-1.18.4": {
+      "url": "nar/0w6r7qdhv5bih6f9rfafvpp0iavv27gagcc46wwz1h9lv59hvhz4.nar.xz",
+      "hash": "0ci3da6db19gckz0i5j3br992cspvlz1",
+      "size": 0,
+      "narHash": "f6b44ffa6e5c25322c062d816da6b91b298ff060d0f722cad1b8bc32b8c78ff4",
+      "narSize": 1954208,
+      "fileHash": "e4c30d53d934c1f0393784b1a7de117bab08eedd4eb99c9c8171950d1b3ed970",
+      "fileSize": 651184,
+      "references": [
+        "0ci3da6db19gckz0i5j3br992cspvlz1-cairo-1.18.4",
+        "55071y2xjibw8f317scvlg788w31k7k8-libxext-1.3.6",
+        "5l5wsn4qxkw90h6sxxz43gbnar7w5x8s-fontconfig-2.17.1-lib",
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "9babi8y8p9crps6l8sz5gr5xm5fljw1h-libxcb-1.17.0",
+        "b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w-freetype-2.13.3",
+        "dgjd3hf8ny62vbjg10w64x4jwm7cv81k-libxrender-0.9.12",
+        "ja09m2gfni7pqk4bsrhjb8y9cq74rspp-libx11-1.8.12",
+        "k988mrk2fwhsbsy4pp2rcndvprwh643k-lzo-2.10",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "pw03xfrnb6a7nz6ivq6jijsx0n52afnp-pixman-0.46.4",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/0rfz69vp1nl0q2hxzig20hc60sk72z62-curl-8.17.0-bin": {
+      "url": "nar/14wif84955lschifj20aaaq30kld23gg8qbmiivcbl6ahcip3hwz.nar.xz",
+      "hash": "0rfz69vp1nl0q2hxzig20hc60sk72z62",
+      "size": 0,
+      "narHash": "d9a746848a6d278cbff37dc0feeeeab666f2e82f6e37529da39d2b23652d4f07",
+      "narSize": 283280,
+      "fileHash": "9fc3712383cad0c5768c7561f4de108d4e30b0520a08e922649a969208729193",
+      "fileSize": 93956,
+      "references": [
+        "27r2vkndmz7q6gni64l84j46igsz7km4-c-ares-1.34.5",
+        "50b381c1c7h4ll8a40wqh3fcknwpnnck-ngtcp2-1.17.0",
+        "61i74yjkj9p1qphfl7018ja4sdwkipx0-openssl-3.6.0",
+        "8idis3j5l13c3x74jl8xly0k4qyk9mx6-curl-8.17.0",
+        "9z2jg63df52gd4nmbggjcw41cdi4m14p-krb5-1.22.1-lib",
+        "cn8ppsx5dns0n4naa4k5sc0siymg41vw-nghttp2-1.67.1-lib",
+        "d3fj7k3aya8slkgm72gn5izyvnlkgx73-libpsl-0.21.5",
+        "ggxfzhsmd3m54fac5xph7kva38k44mc2-nghttp3-1.12.0",
+        "hxcmad417fd8ql9ylx96xpak7da06yiv-libidn2-2.3.8",
+        "jrczm01vajmmh23wrzbgk51plwn7lfsi-libssh2-1.11.1",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "rlq03x4cwf8zn73hxaxnx0zn5q9kifls-bash-5.3p3",
+        "s7vmxmhkq439cjb7ag9w198p6dk7kl0w-zstd-1.5.7",
+        "v8czfabwiry1aik0j3b4mqkqvn7vnxfi-brotli-1.1.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/12qcfbv6bgmxi1jd2dcddy25ijpcgj60-attr-2.5.2": {
       "url": "nar/1plwzzynaqrwhs58saw058b69704yvlw58wx6scgism0b661jh87.nar.xz",
       "hash": "12qcfbv6bgmxi1jd2dcddy25ijpcgj60",
@@ -47,6 +142,27 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/17djp5v30333dlf5g70i4hs1mb4qlxbd-libtiff-4.7.1": {
+      "url": "nar/0gaqnhjr7a7cryxd55md4065jvd075q0jid3nfmpv5xkxppp8qnp.nar.xz",
+      "hash": "17djp5v30333dlf5g70i4hs1mb4qlxbd",
+      "size": 0,
+      "narHash": "d915b6831de2cacfdc38d3d51a59d913749896f33ba475517f1bf89db0fa4560",
+      "narSize": 744616,
+      "fileHash": "d76274efedb3977dabb3a345097039a06d590c20ad96d2bacfeca89325b4583d",
+      "fileSize": 224216,
+      "references": [
+        "17djp5v30333dlf5g70i4hs1mb4qlxbd-libtiff-4.7.1",
+        "3v1kbi48nc1hxq8b27sgcsaa094lalz5-libdeflate-1.25",
+        "j533zck85w12295i2ljji00wzrvhj7gs-lerc-4.0.0",
+        "jpq2pxbwfin6129vjraf6miv1la17ny9-libwebp-1.6.0",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "li2pfjskp7ijvs29bx2077b6ggq42v0k-libjpeg-turbo-3.1.2",
+        "q5vlz5jl6p7mv220s2vf6z5pqi1n935z-xz-5.8.1",
+        "s7vmxmhkq439cjb7ag9w198p6dk7kl0w-zstd-1.5.7",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/1rd1dikwmy9gnlk5911gf2wf5r8k9wdg-publicsuffix-list-0-unstable-2025-10-08": {
       "url": "nar/0l04y8rib81yv0hacmbxwq4514my446nzzjldjilsa4k396wj7hq.nar.xz",
       "hash": "1rd1dikwmy9gnlk5911gf2wf5r8k9wdg",
@@ -56,6 +172,36 @@
       "fileHash": "181ec94d1a93284da36c54fe6f0d21be925008e67d55a620d83ea01533f20450",
       "fileSize": 74212,
       "references": null
+    },
+    "/nix/store/21qjklkkzc43fg5351hw38dwyi5vycrv-imath-3.2.1": {
+      "url": "nar/0zp2gprw3cgmsrbwgc5gqsxphws45rj6a3n5jdg5kn003kr52gaf.nar.xz",
+      "hash": "21qjklkkzc43fg5351hw38dwyi5vycrv",
+      "size": 0,
+      "narHash": "fb08c828858f9db137a77ecff1cdb843374b795d8700189ab3e11159deac5077",
+      "narSize": 914888,
+      "fileHash": "4e3d51f21c00d8595e93c50e65642e447378bbc6afb0c757d6f5b1c1f37de27e",
+      "fileSize": 107484,
+      "references": [
+        "21qjklkkzc43fg5351hw38dwyi5vycrv-imath-3.2.1",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/25rmy0ayvxrdk50r38v37xyxcmk71n00-openexr-3.3.5": {
+      "url": "nar/1lcbajcn180qs2sawd1621kv0628lqv7qxz0q7lpbyj3yf9a23vi.nar.xz",
+      "hash": "25rmy0ayvxrdk50r38v37xyxcmk71n00",
+      "size": 0,
+      "narHash": "a51a3831ad48ed284ffd4ac1fdbb67dbd7ebd234e4acce1f6569c56375712e6b",
+      "narSize": 3790208,
+      "fileHash": "710fa192f343fa75e9c1e0777c36a64818b067102634aeb4d018a06099548bd1",
+      "fileSize": 782472,
+      "references": [
+        "21qjklkkzc43fg5351hw38dwyi5vycrv-imath-3.2.1",
+        "25rmy0ayvxrdk50r38v37xyxcmk71n00-openexr-3.3.5",
+        "3v1kbi48nc1hxq8b27sgcsaa094lalz5-libdeflate-1.25",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
     },
     "/nix/store/27r2vkndmz7q6gni64l84j46igsz7km4-c-ares-1.34.5": {
       "url": "nar/1w4zlj4qpikzcnpyb41w4gm2kvjmnj6px1rg0n33yj40rcbbyz8c.nar.xz",
@@ -93,6 +239,23 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/2cvndn3mmkpp148rd9njqkj21k9w0vyz-openjpeg-2.5.4": {
+      "url": "nar/0m6zx35g3w7glzmq3ckc6qpaxk9wlawqi8b7i37pkhd7paf7sggy.nar.xz",
+      "hash": "2cvndn3mmkpp148rd9njqkj21k9w0vyz",
+      "size": 0,
+      "narHash": "1ea720fdf51085a4df0672f564d8f9fa413f953776b9b566fdeb64b288fabd4c",
+      "narSize": 1674344,
+      "fileHash": "fe3d7d9cbaa7c179cf8867a188b9a23ccdae2e366cb281eba7eff0f1cae8df54",
+      "fileSize": 317764,
+      "references": [
+        "17djp5v30333dlf5g70i4hs1mb4qlxbd-libtiff-4.7.1",
+        "2cvndn3mmkpp148rd9njqkj21k9w0vyz-openjpeg-2.5.4",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "ligc3sv7wkfc81fjpbpm9ypcznkx7j56-lcms2-2.17",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/2f7yzmvcsydw38zr369l9xpk63v1ld5q-gmp-with-cxx-6.3.0": {
       "url": "nar/0xf9zivg2r9ax70b69189fsrz2q7lns77wrb8fmrq9mafibl646k.nar.xz",
       "hash": "2f7yzmvcsydw38zr369l9xpk63v1ld5q",
@@ -104,6 +267,29 @@
       "references": [
         "2f7yzmvcsydw38zr369l9xpk63v1ld5q-gmp-with-cxx-6.3.0",
         "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/2ryq506h3bjvkrbydqjrr5b4id9m63a3-pango-1.57.0": {
+      "url": "nar/0gvl80ybpwh4mj8ql3xl0r8xjb82f7hb0y8m8pcpj37cm7d1wkia.nar.xz",
+      "hash": "2ryq506h3bjvkrbydqjrr5b4id9m63a3",
+      "size": 0,
+      "narHash": "45cd04e83f9d6555817a540b874c3b01be821d038893e8b3422e9ed14bf89c37",
+      "narSize": 925560,
+      "fileHash": "2a4e1edaa9ec0c79d9451579b0e071022dd95106b40f8a91ac04f2bb3c40743f",
+      "fileSize": 263376,
+      "references": [
+        "0ci3da6db19gckz0i5j3br992cspvlz1-cairo-1.18.4",
+        "2ryq506h3bjvkrbydqjrr5b4id9m63a3-pango-1.57.0",
+        "5l5wsn4qxkw90h6sxxz43gbnar7w5x8s-fontconfig-2.17.1-lib",
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "8mk1lafnnrx0a6lvjh69afm8w3i4pvqx-harfbuzz-12.1.0",
+        "b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w-freetype-2.13.3",
+        "dgjd3hf8ny62vbjg10w64x4jwm7cv81k-libxrender-0.9.12",
+        "hsf2g79801wp025f38r6abz3nkykzw3p-fribidi-1.0.16",
+        "i1f35rcryp9fkh8k06ggp535ydq1grnk-libthai-0.1.29",
+        "ja09m2gfni7pqk4bsrhjb8y9cq74rspp-libx11-1.8.12",
+        "r2av6qwa7rqrwicbva1nrhmxlks8sphg-libxft-2.3.9",
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
@@ -149,6 +335,20 @@
         "fcjxpmr2a6znnd1wj1f5s1lkjshgiv6i-perl5.40.0-CGI-4.59"
       ]
     },
+    "/nix/store/3k8fgdy2mm7ql01n9nk5hpn9lvp6vy0f-potrace-1.16": {
+      "url": "nar/1b3lxny9275kgaw6qqgmq1wz3rggxys6mf59pa2yfxrd984zmgk7.nar.xz",
+      "hash": "3k8fgdy2mm7ql01n9nk5hpn9lvp6vy0f",
+      "size": 0,
+      "narHash": "3298fb9e85cd9fa17f1baa34897d704ba25ebd2d54f607d7a410bb7ca23b9931",
+      "narSize": 255456,
+      "fileHash": "67befa094a2d77e785baa9b86ab4efefe5f179c0f5616cb87ab31c91bced74ac",
+      "fileSize": 95268,
+      "references": [
+        "3k8fgdy2mm7ql01n9nk5hpn9lvp6vy0f-potrace-1.16",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/3lll9y925zz9393sa59h653xik66srjb-python3-3.13.9": {
       "url": "nar/0nldzqax2z9352672hqjgxfp4pv280ik78h1yw7nfvv3bq3pxdri.nar.xz",
       "hash": "3lll9y925zz9393sa59h653xik66srjb",
@@ -190,6 +390,34 @@
         "3rkccxj7vi0p2a0d48c4a4z2vv2cni88-libunistring-1.4.1"
       ]
     },
+    "/nix/store/3v1kbi48nc1hxq8b27sgcsaa094lalz5-libdeflate-1.25": {
+      "url": "nar/0003z8a5zka5bpb8apzj52g05gnz2d65grk786b7bsdx3vrdsala.nar.xz",
+      "hash": "3v1kbi48nc1hxq8b27sgcsaa094lalz5",
+      "size": 0,
+      "narHash": "077d002aa59dd36b502b7fe0581d279fb42aad740d355c42a7aa705a0216de67",
+      "narSize": 451216,
+      "fileHash": "8a2addf21ebde975964167e6574c13dfbe029e28f25f85d65d45cd5f14fa0300",
+      "fileSize": 65428,
+      "references": [
+        "3v1kbi48nc1hxq8b27sgcsaa094lalz5-libdeflate-1.25",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/40v11lr8w4c0ap8gchp6qr6jn7hipg25-gperftools-2.17.2": {
+      "url": "nar/0khd2ly42xak34hwng5zhk1pv8sg88dwqaakhzm6ymi1v2xy0x5c.nar.xz",
+      "hash": "40v11lr8w4c0ap8gchp6qr6jn7hipg25",
+      "size": 0,
+      "narHash": "a5dc8b9b9af8520acb67fce5a56a77334a8e3a36ab379286526a797966f23974",
+      "narSize": 5042520,
+      "fileHash": "ac74e0bbd821566fea875329cc1b424fa37dc384bf3ccb21195375413c150d4e",
+      "fileSize": 586076,
+      "references": [
+        "40v11lr8w4c0ap8gchp6qr6jn7hipg25-gperftools-2.17.2",
+        "c0k2h4l9h6qkw7f5a44jk59yn54w6df5-libunwind-1.8.3",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/41cgbkwax6pd1sgi8l81mamv6rvarryj-readline-8.3p1": {
       "url": "nar/156ih6sapq5lvnznm246znp4mcvpp18g2bbfh7c1mba314wm74jb.nar.xz",
       "hash": "41cgbkwax6pd1sgi8l81mamv6rvarryj",
@@ -201,6 +429,19 @@
       "references": [
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66",
         "yijhn548p2589pkybgvbhll09bqsxy0q-ncurses-6.5"
+      ]
+    },
+    "/nix/store/49jajz5qx6v8dad3fhkr1nrzw9lk8a6p-libice-1.1.2": {
+      "url": "nar/0w74mvps00pis1dizpvqn80l3b3h5xv2771skpwx83aw95lxc5qb.nar.xz",
+      "hash": "49jajz5qx6v8dad3fhkr1nrzw9lk8a6p",
+      "size": 0,
+      "narHash": "4c54a6147e6fbba7187a89939e9daa1e38196984ebf168b78099019cde0fb1e3",
+      "narSize": 124632,
+      "fileHash": "0b17d669495c0dd4f99d3a9c23762f70ac4101b278df1f5bd0f102a0efaee470",
+      "fileSize": 42200,
+      "references": [
+        "49jajz5qx6v8dad3fhkr1nrzw9lk8a6p-libice-1.1.2",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
     "/nix/store/4i062f0h4w7r6yx3hq7cdg0i3lg23p8b-perl5.40.0-TermReadKey-2.38": {
@@ -299,6 +540,73 @@
         "51lqcxm65gf72vs0xzz02ac6v3mvricq-perl5.40.0-IO-HTML-1.004"
       ]
     },
+    "/nix/store/55071y2xjibw8f317scvlg788w31k7k8-libxext-1.3.6": {
+      "url": "nar/1ly7vi6a6c89isz8qgyv6j1x4h1v4jlqybn1f2fjjkc5k9sk6p9j.nar.xz",
+      "hash": "55071y2xjibw8f317scvlg788w31k7k8",
+      "size": 0,
+      "narHash": "e43a23ebf6d9b7e9f5c9fb09b699de77f8f803079490131d3095566c3b6a1ff7",
+      "narSize": 95944,
+      "fileHash": "325d33759a854d299d70c12e8fa9243b40d28334db3f8cbe8e0931a34cdcc7d3",
+      "fileSize": 26664,
+      "references": [
+        "55071y2xjibw8f317scvlg788w31k7k8-libxext-1.3.6",
+        "ja09m2gfni7pqk4bsrhjb8y9cq74rspp-libx11-1.8.12",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/58pjr5984m7qd4r1f9f1h92yi50a0gnj-liblqr-1-0.4.2": {
+      "url": "nar/1c4z6fg5smfjp0wkprxic0j6mz3k423al1lky1sdvjj4hmgsdcvz.nar.xz",
+      "hash": "58pjr5984m7qd4r1f9f1h92yi50a0gnj",
+      "size": 0,
+      "narHash": "df1c3fe855cdc546f15797e580313a747db1417d341c0b131f7f9e4867d5a097",
+      "narSize": 79624,
+      "fileHash": "7fb3a65f8544cadd74f09306aa862073fc6a2460b1e73b39b8d2555d9e339fb0",
+      "fileSize": 26704,
+      "references": [
+        "58pjr5984m7qd4r1f9f1h92yi50a0gnj-liblqr-1-0.4.2",
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/5l5wsn4qxkw90h6sxxz43gbnar7w5x8s-fontconfig-2.17.1-lib": {
+      "url": "nar/0s7g0zaxm7kmzmhhbd6lv2y34gxwkkh61bp3zx3jviw1hw68h7xf.nar.xz",
+      "hash": "5l5wsn4qxkw90h6sxxz43gbnar7w5x8s",
+      "size": 0,
+      "narHash": "68cf3e09b693d6b35a2363a6b671048ba15deace776892df0b109cae0412c93a",
+      "narSize": 416192,
+      "fileHash": "ae1f880c8781c72d47ffe3ae60e09cbc3f32bcd8d4b40561fd759edad507ef68",
+      "fileSize": 141428,
+      "references": [
+        "5l5wsn4qxkw90h6sxxz43gbnar7w5x8s-fontconfig-2.17.1-lib",
+        "b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w-freetype-2.13.3",
+        "jnjcxanszfrp8ln69wp0n9s237xbh7bz-expat-2.7.3",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "mynw03snjj3k1wlsz5v94a10x7l2w5kp-fontconfig-2.17.1",
+        "n6wcsaw689sdfpn425g194v5nkss2xlb-dejavu-fonts-minimal-2.37",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "v8czfabwiry1aik0j3b4mqkqvn7vnxfi-brotli-1.1.0-lib",
+        "xgavznqg1ay2hycpp7yy9ia1n751jcla-bzip2-1.0.8",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1": {
+      "url": "nar/0ighd292aq4w9p2zffdk3z201f3mzd6x3zw1ql8fp3lbpya3r9l6.nar.xz",
+      "hash": "5qdsnc26nv61j5rrw492f19xav2rz45v",
+      "size": 0,
+      "narHash": "8f6f59ef4130134634adeabcecd82269e223fa2a079775f554620cc2cec0ec4e",
+      "narSize": 15714664,
+      "fileHash": "86a63c94bf8b8eeb10c581ffd14dfb75b800c41fb339f7c54d9c60259268f045",
+      "fileSize": 2768748,
+      "references": [
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "6y07blp88mrgn05wxbif8yzmd0g2ss4x-pcre2-10.46",
+        "b9p0zpa93hwvh4d0r1rmgc2500yx2ldn-libffi-3.5.2",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "mzl19fy0j4fl395z3pbkwxcmkxi1733v-util-linux-minimal-2.41.2-lib",
+        "xnaf2w53yacjg7h3127ks7gf61pcs3n8-libselinux-3.8.1",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/5v81w41xjg25x97gnhwc2v2rh1j4qbq8-perl5.40.0-libwww-perl-6.72": {
       "url": "nar/177ngcd5i04f02znbfm98p5jsf998nvrph3pam3z2bddiv10h7wz.nar.xz",
       "hash": "5v81w41xjg25x97gnhwc2v2rh1j4qbq8",
@@ -360,6 +668,33 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/6k3r9l6kxq712knqhrv0zghnskr4gk2m-libjxl-0.11.1": {
+      "url": "nar/0yjx5ldwjkgr4lx2rxsvc76f86qkmxd4mcwilwxxinrb2agf2d0w.nar.xz",
+      "hash": "6k3r9l6kxq712knqhrv0zghnskr4gk2m",
+      "size": 0,
+      "narHash": "960270e4a3cba67ceda3aae33963a3438ba5c4044536f29aa19a91e8cc02ce2a",
+      "narSize": 8715520,
+      "fileHash": "1c34e19e122bdbd83ba791b34a5aaf131be4cc615bf72c3a25f94dc91b2d5d7a",
+      "fileSize": 1920640,
+      "references": [
+        "21qjklkkzc43fg5351hw38dwyi5vycrv-imath-3.2.1",
+        "25rmy0ayvxrdk50r38v37xyxcmk71n00-openexr-3.3.5",
+        "40v11lr8w4c0ap8gchp6qr6jn7hipg25-gperftools-2.17.2",
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "6k3r9l6kxq712knqhrv0zghnskr4gk2m-libjxl-0.11.1",
+        "bcv98jffnvqxvyncf1bayz50r9wj7g3q-libwebp-1.6.0",
+        "cfnas28yx8ni9izjmk3f9hgwzin798nl-gdk-pixbuf-2.44.4",
+        "jd7libxip067wb1xx8vks9hvgscwnw5p-giflib-5.2.2",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "li2pfjskp7ijvs29bx2077b6ggq42v0k-libjpeg-turbo-3.1.2",
+        "ligc3sv7wkfc81fjpbpm9ypcznkx7j56-lcms2-2.17",
+        "rlq03x4cwf8zn73hxaxnx0zn5q9kifls-bash-5.3p3",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "v8czfabwiry1aik0j3b4mqkqvn7vnxfi-brotli-1.1.0-lib",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/6p281mkvcl13fsxwvjrmnn0wldk0ksdc-perl5.40.0-FCGI-ProcManager-0.28": {
       "url": "nar/0d2mw86zf1b1kfwn3b61bzrbn8x72hgxwgs9fsmk1i2jkpmxbi7z.nar.xz",
       "hash": "6p281mkvcl13fsxwvjrmnn0wldk0ksdc",
@@ -410,6 +745,37 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/8mk1lafnnrx0a6lvjh69afm8w3i4pvqx-harfbuzz-12.1.0": {
+      "url": "nar/0fcfya4xd6gh3x398v1fx914hyxvhx8a46l8d025zb4jamnq4xy1.nar.xz",
+      "hash": "8mk1lafnnrx0a6lvjh69afm8w3i4pvqx",
+      "size": 0,
+      "narHash": "44342b828d8d006e99eb19192c4fa5810ad95c0f9cb54dd31d9d13b02729613c",
+      "narSize": 3792288,
+      "fileHash": "c177826d5592ac5f0468881aa25087bb7b4842ea2e6c94461ff099d689f28e39",
+      "fileSize": 1120564,
+      "references": [
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "8mk1lafnnrx0a6lvjh69afm8w3i4pvqx-harfbuzz-12.1.0",
+        "b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w-freetype-2.13.3",
+        "sdbzh44az4p0gglfvlxnb6v9dbzz9rg2-graphite2-1.3.14",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/9babi8y8p9crps6l8sz5gr5xm5fljw1h-libxcb-1.17.0": {
+      "url": "nar/13n8qc5ffjc2yysbkq35jwvkrcakbl8smdgclcrwzdjq0yn8qbm3.nar.xz",
+      "hash": "9babi8y8p9crps6l8sz5gr5xm5fljw1h",
+      "size": 0,
+      "narHash": "8a5b73a6a4c2ae1d63610fb050c0c43461b504c333aa8eb7570abd070f1b8b5a",
+      "narSize": 1465208,
+      "fileHash": "a32e8cac0758b6cf33a3ecb5aa115d53b13c379765e0b9b4f78249e70ac3c88e",
+      "fileSize": 202740,
+      "references": [
+        "9babi8y8p9crps6l8sz5gr5xm5fljw1h-libxcb-1.17.0",
+        "lcss48c1x1pvn1irp2y3fsvc4b5mbqxv-libxau-1.0.12",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66",
+        "z34g38hzz56f3c0pjxs2m90s51ga1y1x-libxdmcp-1.1.5"
+      ]
+    },
     "/nix/store/9k6ivrdddy9s3z1hiwgavl0kfr2czgav-git-2.51.2-doc": {
       "url": "nar/194w84z4bfl3acjslv42r83lazqi02cvav5z44cqxn5kk5h9y6sx.nar.xz",
       "hash": "9k6ivrdddy9s3z1hiwgavl0kfr2czgav",
@@ -447,6 +813,20 @@
         "axjv75lrhcwvqqyfxspfpjjzzgsm3p7a-perl5.40.0-libnet-3.15"
       ]
     },
+    "/nix/store/b1dsw4p8nqs0dj7a5jdknd7w34559g86-fftw-double-3.3.10": {
+      "url": "nar/1h7283dapz1my24j2bghdjjah40sr5nv7pz3472hw7r3qfalvdcb.nar.xz",
+      "hash": "b1dsw4p8nqs0dj7a5jdknd7w34559g86",
+      "size": 0,
+      "narHash": "ae150db9f3a8719aa447f62c0e049428e4cb4676835057d7816c9b421341a372",
+      "narSize": 4060872,
+      "fileHash": "8bb54d95c3231f0ec521e3dfb36dc91a10a8a46cf02d2189f035fcabda40e2c0",
+      "fileSize": 1212924,
+      "references": [
+        "b1dsw4p8nqs0dj7a5jdknd7w34559g86-fftw-double-3.3.10",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/b6pvwiy0qqnglg48dbshmdfsjavr9z37-perl5.40.0-HTTP-Date-6.06": {
       "url": "nar/0in3v5c0ckvhnmllphlasgj8871qswnl3yk98hslm20238z4wj04.nar.xz",
       "hash": "b6pvwiy0qqnglg48dbshmdfsjavr9z37",
@@ -458,6 +838,23 @@
       "references": [
         "b6pvwiy0qqnglg48dbshmdfsjavr9z37-perl5.40.0-HTTP-Date-6.06",
         "zsq35qbs90c1nkh51w3qkmp7x2zpgqw7-perl5.40.0-TimeDate-2.33"
+      ]
+    },
+    "/nix/store/b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w-freetype-2.13.3": {
+      "url": "nar/1r0hi4m9q9l6chq44nn0dqw8vchp2y73l0cwimpbs3imm037ixjk.nar.xz",
+      "hash": "b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w",
+      "size": 0,
+      "narHash": "0f0fd187dbd2305499692fae3dc68e8357396e28beb41419906714461a016430",
+      "narSize": 2154912,
+      "fileHash": "53f67806a8350ebd6e8d9c013a8e1717b28d386ec05a42306486269c2a8910e4",
+      "fileSize": 446960,
+      "references": [
+        "b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w-freetype-2.13.3",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "v8czfabwiry1aik0j3b4mqkqvn7vnxfi-brotli-1.1.0-lib",
+        "xgavznqg1ay2hycpp7yy9ia1n751jcla-bzip2-1.0.8",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
     "/nix/store/b9p0zpa93hwvh4d0r1rmgc2500yx2ldn-libffi-3.5.2": {
@@ -473,6 +870,24 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/bcv98jffnvqxvyncf1bayz50r9wj7g3q-libwebp-1.6.0": {
+      "url": "nar/00vrqmxjdgn75d8diywbyz6jmgb71x7f5wvd2iq1whjvbdnlbxi1.nar.xz",
+      "hash": "bcv98jffnvqxvyncf1bayz50r9wj7g3q",
+      "size": 0,
+      "narHash": "1e3af37a66b7bd7facd61804545eb4286676659d207f2dddd009e27eba6146cc",
+      "narSize": 1777816,
+      "fileHash": "21f6456d5b5b421e70146df3e24e0f67bd2acdf78bfbd8502bc7be267bc57903",
+      "fileSize": 453636,
+      "references": [
+        "17djp5v30333dlf5g70i4hs1mb4qlxbd-libtiff-4.7.1",
+        "bcv98jffnvqxvyncf1bayz50r9wj7g3q-libwebp-1.6.0",
+        "jd7libxip067wb1xx8vks9hvgscwnw5p-giflib-5.2.2",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "li2pfjskp7ijvs29bx2077b6ggq42v0k-libjpeg-turbo-3.1.2",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/bkr35ng0r718kd7fi5dfhmff4z7nj6j8-perl5.40.0-Mozilla-CA-20230821": {
       "url": "nar/11659j8arx66ydwcx40lg39bbcciag1cin1b4ycp8f9gaj9shg0s.nar.xz",
       "hash": "bkr35ng0r718kd7fi5dfhmff4z7nj6j8",
@@ -483,6 +898,37 @@
       "fileSize": 156900,
       "references": [
         "bkr35ng0r718kd7fi5dfhmff4z7nj6j8-perl5.40.0-Mozilla-CA-20230821"
+      ]
+    },
+    "/nix/store/c0k2h4l9h6qkw7f5a44jk59yn54w6df5-libunwind-1.8.3": {
+      "url": "nar/109wnc6lsw55y34cvn36jg2kszbjdzfn3aisg2jpkihlblka62v6.nar.xz",
+      "hash": "c0k2h4l9h6qkw7f5a44jk59yn54w6df5",
+      "size": 0,
+      "narHash": "d9edbcaf73c817c7813d0015c31010d7997eab631a50735b6c85d182dbc3ddcf",
+      "narSize": 274056,
+      "fileHash": "660ba3265d14c679a5783aaa61dd6f727d3dc59366d8cdc8f0a5704d0db33c81",
+      "fileSize": 58916,
+      "references": [
+        "c0k2h4l9h6qkw7f5a44jk59yn54w6df5-libunwind-1.8.3",
+        "q5vlz5jl6p7mv220s2vf6z5pqi1n935z-xz-5.8.1",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/cfnas28yx8ni9izjmk3f9hgwzin798nl-gdk-pixbuf-2.44.4": {
+      "url": "nar/1zv124xgk58cbqx9dzg35r1jx7kpvqkgck5cr09zll7h8vbfzqyy.nar.xz",
+      "hash": "cfnas28yx8ni9izjmk3f9hgwzin798nl",
+      "size": 0,
+      "narHash": "ef2f4198cb18f53d2051584341cad784e1084fbd46dba378057c3d67f8687f36",
+      "narSize": 2939536,
+      "fileHash": "dee3efd646f050fa13c8ac4cf626de779e2e432ee3fd963a5e0c95f93a1161ff",
+      "fileSize": 431740,
+      "references": [
+        "17djp5v30333dlf5g70i4hs1mb4qlxbd-libtiff-4.7.1",
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "cfnas28yx8ni9izjmk3f9hgwzin798nl-gdk-pixbuf-2.44.4",
+        "li2pfjskp7ijvs29bx2077b6ggq42v0k-libjpeg-turbo-3.1.2",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
     "/nix/store/ciy069c2g7wsifsmvcw7rd7n587hj0d8-perl5.40.0-HTML-TagCloud-0.38": {
@@ -553,6 +999,22 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/d98hncrshrqh4z28kj3bn9x5bqfqcahx-libxt-1.3.1": {
+      "url": "nar/0a9hkks1v6xd5qpyj3fiygq89n73pp12mh7r1vw98ir5c8176znn.nar.xz",
+      "hash": "d98hncrshrqh4z28kj3bn9x5bqfqcahx",
+      "size": 0,
+      "narHash": "13cbd23bb8a8a0b558716b6c3413b7dd70a484f7ecf3ef8dbfc625cc94b542f0",
+      "narSize": 491192,
+      "fileHash": "d67e730262254794f80ef9c02ac2bde3d884f0f3d10de92f2ead9b1df49c3029",
+      "fileSize": 166144,
+      "references": [
+        "49jajz5qx6v8dad3fhkr1nrzw9lk8a6p-libice-1.1.2",
+        "d98hncrshrqh4z28kj3bn9x5bqfqcahx-libxt-1.3.1",
+        "ja09m2gfni7pqk4bsrhjb8y9cq74rspp-libx11-1.8.12",
+        "xk3x9567nwma79iim3ar1ixl0rcf7449-libsm-1.2.6",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/dac31zgddjfrlfk93arbqgshp333ismb-perl5.40.0-HTTP-Cookies-6.10": {
       "url": "nar/105sx592yk6wkwsa4cwsbjykza67z4561vsrxrmd3ds9acwaiflp.nar.xz",
       "hash": "dac31zgddjfrlfk93arbqgshp333ismb",
@@ -577,6 +1039,20 @@
       "references": [
         "b6pvwiy0qqnglg48dbshmdfsjavr9z37-perl5.40.0-HTTP-Date-6.06",
         "dbv47rch3kldall2bcd2j7x20ll7h1cm-perl5.40.0-HTTP-CookieJar-0.014"
+      ]
+    },
+    "/nix/store/dgjd3hf8ny62vbjg10w64x4jwm7cv81k-libxrender-0.9.12": {
+      "url": "nar/11mhxw0ydz167chswhx0xc3n0lahlaw7zp3sx985asjdgxilkf2a.nar.xz",
+      "hash": "dgjd3hf8ny62vbjg10w64x4jwm7cv81k",
+      "size": 0,
+      "narHash": "83a317bb8f070807ccc53fe0682cbd529439cebc91251ec0264782ee5b6c241e",
+      "narSize": 54504,
+      "fileHash": "4ab849637f4d6a5550ea7adc7fb8a250516007eba043ae213b26fce601efb086",
+      "fileSize": 17120,
+      "references": [
+        "dgjd3hf8ny62vbjg10w64x4jwm7cv81k-libxrender-0.9.12",
+        "ja09m2gfni7pqk4bsrhjb8y9cq74rspp-libx11-1.8.12",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
     "/nix/store/di5yf2kfx8czs15zla36sjjjs4m4jl7y-perl5.40.0-FCGI-0.82": {
@@ -654,6 +1130,20 @@
       "fileSize": 26156,
       "references": null
     },
+    "/nix/store/gdni20c8009xdz8gms6yn1r2hfhmk1jk-numactl-2.0.18": {
+      "url": "nar/04ndi553y07r06mikjn2zk4932gq4nmnsl3dk7jmdnrakl7r3h3m.nar.xz",
+      "hash": "gdni20c8009xdz8gms6yn1r2hfhmk1jk",
+      "size": 0,
+      "narHash": "439c7e71ea4eabf1fe1c1410c2f98734b7af1789a48d36fbe7ff79e9e922c2b6",
+      "narSize": 276416,
+      "fileHash": "75c0910f9d2adb56e5996d506dab25f88991c8fcc2ca19ab01f9003f4a89cd12",
+      "fileSize": 65328,
+      "references": [
+        "gdni20c8009xdz8gms6yn1r2hfhmk1jk-numactl-2.0.18",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/gdpdm84n9rn7wkrhrps1d05l50lds7g1-perl5.40.0-URI-5.21": {
       "url": "nar/07s891bhlx9jq3rvzx877w55ganlz91wqmgjhvsh3q0g22niw99k.nar.xz",
       "hash": "gdpdm84n9rn7wkrhrps1d05l50lds7g1",
@@ -706,6 +1196,19 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/hsf2g79801wp025f38r6abz3nkykzw3p-fribidi-1.0.16": {
+      "url": "nar/1iq4s736fxj3yb2pzln36fbwnbf8pz7a638zqww2y38fwmkrd8a9.nar.xz",
+      "hash": "hsf2g79801wp025f38r6abz3nkykzw3p",
+      "size": 0,
+      "narHash": "afed03d0ae746c32e79da28749ca2f047b12d5cc690fc3a8668b40dd8be1af43",
+      "narSize": 166400,
+      "fileHash": "49a19667e50e0d2f38c71f0da3cebfc82dcb9733c3d27fc5f2437667c6d104c7",
+      "fileSize": 26992,
+      "references": [
+        "hsf2g79801wp025f38r6abz3nkykzw3p-fribidi-1.0.16",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/hxcmad417fd8ql9ylx96xpak7da06yiv-libidn2-2.3.8": {
       "url": "nar/0ba31li9jzcy3sgsix34pz9kf4rgfxx4c986bzszgvs9gg6cpbnz.nar.xz",
       "hash": "hxcmad417fd8ql9ylx96xpak7da06yiv",
@@ -717,6 +1220,30 @@
       "references": [
         "3rkccxj7vi0p2a0d48c4a4z2vv2cni88-libunistring-1.4.1",
         "hxcmad417fd8ql9ylx96xpak7da06yiv-libidn2-2.3.8"
+      ]
+    },
+    "/nix/store/hyzfrys4gr0pn9r7w57fnf8xmjq481yp-djvulibre-3.5.29": {
+      "url": "nar/0g7l5f6cgnswqxgi948kn4xzrdpwlrlphsh7xkwjx3qjlqf94ycz.nar.xz",
+      "hash": "hyzfrys4gr0pn9r7w57fnf8xmjq481yp",
+      "size": 0,
+      "narHash": "1f0f4b7de1ac18f3a3f39f8f7f45378bd03f26abf4cc12f36435094f981cb283",
+      "narSize": 405680,
+      "fileHash": "9f79921ca6128f2ef9ec076a7869a6fcb6fc3bb11391145fc75cdbc78c2bf43c",
+      "fileSize": 126540,
+      "references": null
+    },
+    "/nix/store/i1f35rcryp9fkh8k06ggp535ydq1grnk-libthai-0.1.29": {
+      "url": "nar/1w0cx5g4kyw10ndbcg4mymj9sb8ghqmfqvrkk4gh0nkrprqaw9zh.nar.xz",
+      "hash": "i1f35rcryp9fkh8k06ggp535ydq1grnk",
+      "size": 0,
+      "narHash": "8b6dd5745cdaaff7c61c1aa6a80b9082290d2b6f8fe2798201ac959f594e885e",
+      "narSize": 646288,
+      "fileHash": "f027ae70be795a001f99336fec2a860f2d9d64f5953cb69a0581fb495ee90cf0",
+      "fileSize": 148720,
+      "references": [
+        "i1f35rcryp9fkh8k06ggp535ydq1grnk-libthai-0.1.29",
+        "vzdwrad5hpib85pa48bkkwniika2phxh-libdatrie-2019-12-20-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
     "/nix/store/i659227blkv1pfcd420ag5i47faqj4h5-perl5.40.0-Test-RequiresInternet-0.05": {
@@ -741,6 +1268,18 @@
       "fileSize": 3800,
       "references": [
         "i7ani3bbj69l5z47lc43kql68v9w2nk7-perl5.40.0-Test-Needs-0.002010"
+      ]
+    },
+    "/nix/store/iblpwrd5gdnpxdqhsc5dyyqqhjcziihh-dav1d-1.5.2": {
+      "url": "nar/1fh6mvg6j04yn73i6hbdmh9r70jnkbla8rzrp2kg1bzylzn0x68h.nar.xz",
+      "hash": "iblpwrd5gdnpxdqhsc5dyyqqhjcziihh",
+      "size": 0,
+      "narHash": "65ca2e15857c73584abc031a9583d7c1f65ed174b260fc13368e89bfbe8c5bec",
+      "narSize": 2637984,
+      "fileHash": "10990eeca7feaff0a6b8f967a4e89a56829313ac6d4113c7b19e0069deae06ba",
+      "fileSize": 647476,
+      "references": [
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
     "/nix/store/ibm7023ifv4am8d3g99fz64d0gczdnf7-perl5.40.0-Crypt-URandom-0.54": {
@@ -772,6 +1311,22 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/isd5fqz1qflqv3339zfaqq46q14bqf0a-libraqm-0.10.3": {
+      "url": "nar/1gz6pjaqwfikh72flv974fwjc0zsvcr96asyahj29prynpr893v8.nar.xz",
+      "hash": "isd5fqz1qflqv3339zfaqq46q14bqf0a",
+      "size": 0,
+      "narHash": "5bc0cc364163d6afc7556ee139e6fbe958e82c041ca55f1d7caba0815a2e1f15",
+      "narSize": 44792,
+      "fileHash": "688f84f2b53edf2424545e2b9332dbfa0326b923276deac481333a8e95bce6bf",
+      "fileSize": 14228,
+      "references": [
+        "8mk1lafnnrx0a6lvjh69afm8w3i4pvqx-harfbuzz-12.1.0",
+        "b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w-freetype-2.13.3",
+        "hsf2g79801wp025f38r6abz3nkykzw3p-fribidi-1.0.16",
+        "isd5fqz1qflqv3339zfaqq46q14bqf0a-libraqm-0.10.3",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/iy16i5bk0vmyz2fl7mv96fnkzk8faxfc-perl5.40.0-Clone-0.46": {
       "url": "nar/0k9x7shi708ka7sv62cr872lw72ixrfvnibq9ax4v431angl31cz.nar.xz",
       "hash": "iy16i5bk0vmyz2fl7mv96fnkzk8faxfc",
@@ -782,6 +1337,58 @@
       "fileSize": 6356,
       "references": [
         "iy16i5bk0vmyz2fl7mv96fnkzk8faxfc-perl5.40.0-Clone-0.46",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/j533zck85w12295i2ljji00wzrvhj7gs-lerc-4.0.0": {
+      "url": "nar/0983qgi3s5hcrl8cjq14rmz79dgv3v59v7fg2wy35mvqrvzd2znw.nar.xz",
+      "hash": "j533zck85w12295i2ljji00wzrvhj7gs",
+      "size": 0,
+      "narHash": "a23cb917f9af5f22341441fe2f42ab68a7776917d91c7cdb87a93f0d2cca59a9",
+      "narSize": 871088,
+      "fileHash": "dc7ed1fece78d7323c17cf9d9dca1efbb5747ecd2460c910cd0c163de2c30325",
+      "fileSize": 215364,
+      "references": [
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/ja09m2gfni7pqk4bsrhjb8y9cq74rspp-libx11-1.8.12": {
+      "url": "nar/1li4b1haxd4sxz8api49m4zsixss9803ak6djajji7anrk2l6fvs.nar.xz",
+      "hash": "ja09m2gfni7pqk4bsrhjb8y9cq74rspp",
+      "size": 0,
+      "narHash": "0321455d51f4e197161e0d0c8e5c59ea32eba4735cbdf00125b6b08b7d3ce8d1",
+      "narSize": 2688008,
+      "fileHash": "7a3b43c5cc569d28a592cd4c35004a5af7a83fa989c4abd0ef9ab4ae605824d2",
+      "fileSize": 683504,
+      "references": [
+        "9babi8y8p9crps6l8sz5gr5xm5fljw1h-libxcb-1.17.0",
+        "ja09m2gfni7pqk4bsrhjb8y9cq74rspp-libx11-1.8.12",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/jcr97i4l3gqxyy6x3rb5yjwwxhi4454l-libxml2-2.15.1": {
+      "url": "nar/1pk9xdmws9wys5w4fygpf5b4flc8w1m9wsqjbs180d8xfv73msms.nar.xz",
+      "hash": "jcr97i4l3gqxyy6x3rb5yjwwxhi4454l",
+      "size": 0,
+      "narHash": "bab3089ccb8e2e77990deabd75f84b58cc8d4c9cfe2da69bb2842c76a243d240",
+      "narSize": 1447736,
+      "fileHash": "baea3ace761d3580825e126b9e6ae08851475671f7794778d19e27cd6beb69de",
+      "fileSize": 506008,
+      "references": [
+        "jcr97i4l3gqxyy6x3rb5yjwwxhi4454l-libxml2-2.15.1",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/jd7libxip067wb1xx8vks9hvgscwnw5p-giflib-5.2.2": {
+      "url": "nar/10k3wcp6x034w52vps3jbrr6f0m32dx9yw3s6hpfqa8psr3y4b20.nar.xz",
+      "hash": "jd7libxip067wb1xx8vks9hvgscwnw5p",
+      "size": 0,
+      "narHash": "17837abdcca9fbdca28549732e2067e158d5c5f5f420c7bf7ffd89626932a3b8",
+      "narSize": 412776,
+      "fileHash": "402ce247d61729ec2e347a709f7a13a30267725e72e8bb45e164806e2ee36382",
+      "fileSize": 70896,
+      "references": [
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
@@ -812,6 +1419,23 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/jpq2pxbwfin6129vjraf6miv1la17ny9-libwebp-1.6.0": {
+      "url": "nar/09x3i7ayzxb2dbpszalv7cvz942s7cl8anijxrd56spwvalw6405.nar.xz",
+      "hash": "jpq2pxbwfin6129vjraf6miv1la17ny9",
+      "size": 0,
+      "narHash": "50495d4247534fdadb6d250232e0637bdd0c891d4a41ba0d648b935cbb47982f",
+      "narSize": 1768216,
+      "fileHash": "0510c3a9dafc6a535aee325a85283b5a90f4373b9baaafef6a62f5efd589a327",
+      "fileSize": 452244,
+      "references": [
+        "jd7libxip067wb1xx8vks9hvgscwnw5p-giflib-5.2.2",
+        "jpq2pxbwfin6129vjraf6miv1la17ny9-libwebp-1.6.0",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "li2pfjskp7ijvs29bx2077b6ggq42v0k-libjpeg-turbo-3.1.2",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/jrczm01vajmmh23wrzbgk51plwn7lfsi-libssh2-1.11.1": {
       "url": "nar/13ki2wgy650cmvdfh11mg2z32zry4k5vpy5dzin1a3shzjq12lha.nar.xz",
       "hash": "jrczm01vajmmh23wrzbgk51plwn7lfsi",
@@ -824,6 +1448,19 @@
         "61i74yjkj9p1qphfl7018ja4sdwkipx0-openssl-3.6.0",
         "jrczm01vajmmh23wrzbgk51plwn7lfsi-libssh2-1.11.1",
         "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/k988mrk2fwhsbsy4pp2rcndvprwh643k-lzo-2.10": {
+      "url": "nar/064ivarlkmdvmzpnfhz2k8hlndy4qsal8y6101pgndzm5blqmx0k.nar.xz",
+      "hash": "k988mrk2fwhsbsy4pp2rcndvprwh643k",
+      "size": 0,
+      "narHash": "521d7ab691a3fa32a1afe60a5410d6eb268e82b929177f03fdabb892fc6247de",
+      "narSize": 405824,
+      "fileHash": "13f48ae92af537fb6e00c1784495c6c4374b219ae24367efafbbd549b3da9118",
+      "fileSize": 81592,
+      "references": [
+        "k988mrk2fwhsbsy4pp2rcndvprwh643k-lzo-2.10",
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
@@ -882,6 +1519,19 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/lcss48c1x1pvn1irp2y3fsvc4b5mbqxv-libxau-1.0.12": {
+      "url": "nar/1qfxaf5fp8xwfdxs0xs78ll12vcjsm3mjqinqx7kaplals0qkny3.nar.xz",
+      "hash": "lcss48c1x1pvn1irp2y3fsvc4b5mbqxv",
+      "size": 0,
+      "narHash": "60a91a2572faded759dd7c5f6d6b162002efb626c2dbbf42bfd5fb80212673ad",
+      "narSize": 23696,
+      "fileHash": "c3db8981a68a5e354fc736625947d5926d1128454777a07b73bca3eb8a53dde1",
+      "fileSize": 7804,
+      "references": [
+        "lcss48c1x1pvn1irp2y3fsvc4b5mbqxv-libxau-1.0.12",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/lcwnhmdd6fqf84y35ll4i6ivi2x8vvd5-mpdecimal-4.0.1": {
       "url": "nar/0rpbwdzzz6aqf1yngycahkblsww7h32yp9p07fjca41yfbxjk15v.nar.xz",
       "hash": "lcwnhmdd6fqf84y35ll4i6ivi2x8vvd5",
@@ -906,6 +1556,31 @@
         "lhicc1840hbljj7mjly69xfjpf8a4ga5-perl5.40.0-Encode-Locale-1.05"
       ]
     },
+    "/nix/store/li2pfjskp7ijvs29bx2077b6ggq42v0k-libjpeg-turbo-3.1.2": {
+      "url": "nar/1m2a96s4dfylvisnafy5fpzcc9r5ac5f8cj29x2ig96j089xlrn0.nar.xz",
+      "hash": "li2pfjskp7ijvs29bx2077b6ggq42v0k",
+      "size": 0,
+      "narHash": "5f9f02139c5bd49a53ff8f22264e74e3099a8091abd95761ae656004001c97b3",
+      "narSize": 2041216,
+      "fileHash": "c066da1302d2a417454f4232e40a532527c6fe75c53b6575dcd4bb46b4494ad4",
+      "fileSize": 301988,
+      "references": [
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/ligc3sv7wkfc81fjpbpm9ypcznkx7j56-lcms2-2.17": {
+      "url": "nar/0ms85svg28m6fwra7y781iy0kp4haqdqa2hqhbnp1p565lc3fsbn.nar.xz",
+      "hash": "ligc3sv7wkfc81fjpbpm9ypcznkx7j56",
+      "size": 0,
+      "narHash": "284cfa0a6256721c642ad38448b711eb73706d9fb7b3ba7f401c71aef5708bcc",
+      "narSize": 481928,
+      "fileHash": "766937182da6dc70ed82180a851b5690dc097c0ce8f8a33277a622f1b62e4857",
+      "fileSize": 160124,
+      "references": [
+        "ligc3sv7wkfc81fjpbpm9ypcznkx7j56-lcms2-2.17",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/mpnywp6s187jcwblzfk82wij3r6c1ix6-perl5.40.0-Net-HTTP-6.23": {
       "url": "nar/1760p5bp5gjylv9vhbcfvg8x46nbapsnwd382gr20qp1ywqg4qrn.nar.xz",
       "hash": "mpnywp6s187jcwblzfk82wij3r6c1ix6",
@@ -917,6 +1592,19 @@
       "references": [
         "gdpdm84n9rn7wkrhrps1d05l50lds7g1-perl5.40.0-URI-5.21",
         "mpnywp6s187jcwblzfk82wij3r6c1ix6-perl5.40.0-Net-HTTP-6.23"
+      ]
+    },
+    "/nix/store/mynw03snjj3k1wlsz5v94a10x7l2w5kp-fontconfig-2.17.1": {
+      "url": "nar/0mgm5yd1vj5nhbqg81ymalpdzblwci64lh14n4bhxr061xy2qy9w.nar.xz",
+      "hash": "mynw03snjj3k1wlsz5v94a10x7l2w5kp",
+      "size": 0,
+      "narHash": "dcac58a822162e106cad46a37e10b89d4e712c59cae6cefd9aecd594a3505359",
+      "narSize": 1286064,
+      "fileHash": "3c792c7c0f06e40e17b124404a4c649caedf2e55d507f4f082b6c81d9a2ff555",
+      "fileSize": 617748,
+      "references": [
+        "mynw03snjj3k1wlsz5v94a10x7l2w5kp-fontconfig-2.17.1",
+        "n6wcsaw689sdfpn425g194v5nkss2xlb-dejavu-fonts-minimal-2.37"
       ]
     },
     "/nix/store/mzl19fy0j4fl395z3pbkwxcmkxi1733v-util-linux-minimal-2.41.2-lib": {
@@ -932,6 +1620,16 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/n6wcsaw689sdfpn425g194v5nkss2xlb-dejavu-fonts-minimal-2.37": {
+      "url": "nar/0c0866xrrsqimnq1bf13ffgzph7fbsrywdcz60788y1009xv9y4r.nar.xz",
+      "hash": "n6wcsaw689sdfpn425g194v5nkss2xlb",
+      "size": 0,
+      "narHash": "beb0281b1602dee366c08f99d36324bca05733272b45b512c16096abbd8c7dba",
+      "narSize": 760472,
+      "fileHash": "99f8b47b022078840e309f35eeb35eeec0fb9f7323b815b0ad11eb9cbb310830",
+      "fileSize": 302648,
+      "references": null
+    },
     "/nix/store/n722b9gv2kqdxsbgyg2f1mg19ddszybl-perl5.40.0-WWW-RobotRules-6.02": {
       "url": "nar/10fhzziwa0d1zmkqrp4m1nc4q53gmmnxhr2x8qaa600a0jz5ar64.nar.xz",
       "hash": "n722b9gv2kqdxsbgyg2f1mg19ddszybl",
@@ -943,6 +1641,21 @@
       "references": [
         "gdpdm84n9rn7wkrhrps1d05l50lds7g1-perl5.40.0-URI-5.21",
         "n722b9gv2kqdxsbgyg2f1mg19ddszybl-perl5.40.0-WWW-RobotRules-6.02"
+      ]
+    },
+    "/nix/store/pflha0dwwfqb7m34jginsvm56arz5wia-libraw-0.21.4-lib": {
+      "url": "nar/1sbqxr4qvzl9dwmdzf7nsbskwbh49jbrdc7gna9f94p83qyi8n9q.nar.xz",
+      "hash": "pflha0dwwfqb7m34jginsvm56arz5wia",
+      "size": 0,
+      "narHash": "bf097445564062b83705f063a8c91aa74780993c32f69cd4b3fc23f14db749aa",
+      "narSize": 2489152,
+      "fileHash": "3859143d1ee892e492b2efb096974c042e3ef5d2f6b8df2a6f89fe8d49ee78e9",
+      "fileSize": 341928,
+      "references": [
+        "ligc3sv7wkfc81fjpbpm9ypcznkx7j56-lcms2-2.17",
+        "pflha0dwwfqb7m34jginsvm56arz5wia-libraw-0.21.4-lib",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
     "/nix/store/pnb3j701qxnmyk9gbbf3lhn5qq3mffb1-perl5.40.0-LWP-MediaTypes-6.04": {
@@ -957,6 +1670,19 @@
         "pnb3j701qxnmyk9gbbf3lhn5qq3mffb1-perl5.40.0-LWP-MediaTypes-6.04"
       ]
     },
+    "/nix/store/pw03xfrnb6a7nz6ivq6jijsx0n52afnp-pixman-0.46.4": {
+      "url": "nar/17ydvrlfxxcfgykbq14p1fghhvy59n3wq11gk7bnn9i88akh0iwh.nar.xz",
+      "hash": "pw03xfrnb6a7nz6ivq6jijsx0n52afnp",
+      "size": 0,
+      "narHash": "a459905a630f32066d8414b9835dd88caf042f3f24d84b8b30ac016845bb266b",
+      "narSize": 874232,
+      "fileHash": "904700a74228266bd7992f04cc874dc56f089f0b9704bca67f8ef5ee68decd9f",
+      "fileSize": 276132,
+      "references": [
+        "pw03xfrnb6a7nz6ivq6jijsx0n52afnp-pixman-0.46.4",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/q5vlz5jl6p7mv220s2vf6z5pqi1n935z-xz-5.8.1": {
       "url": "nar/19550h0kcgykw7bh2jga62pyrya6lpi31g02j6b7hcjis90xmjsn.nar.xz",
       "hash": "q5vlz5jl6p7mv220s2vf6z5pqi1n935z",
@@ -967,6 +1693,38 @@
       "fileSize": 194416,
       "references": [
         "q5vlz5jl6p7mv220s2vf6z5pqi1n935z-xz-5.8.1",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/qnb2acprbpaqlvsdfmk2q3n09xp5zb5g-x265-4.1": {
+      "url": "nar/15q5d07xj17mnhi1l7mrq706cxljyrbmr377hq3afkl1mc06dms6.nar.xz",
+      "hash": "qnb2acprbpaqlvsdfmk2q3n09xp5zb5g",
+      "size": 0,
+      "narHash": "5d9216faaf0be743a90978d5b26296fa98ca62a1e382bfc2825c0cf481866bd2",
+      "narSize": 23104232,
+      "fileHash": "46d76600ab814ea70686e78c5c57f6927666c0c1b91e1a22b4f504d90f680597",
+      "fileSize": 1990872,
+      "references": [
+        "gdni20c8009xdz8gms6yn1r2hfhmk1jk-numactl-2.0.18",
+        "qnb2acprbpaqlvsdfmk2q3n09xp5zb5g-x265-4.1",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/r2av6qwa7rqrwicbva1nrhmxlks8sphg-libxft-2.3.9": {
+      "url": "nar/1lvmqh13l5k8llwz4dvvgfvns8cl6i50kx57cx3wylay6yyjyfd4.nar.xz",
+      "hash": "r2av6qwa7rqrwicbva1nrhmxlks8sphg",
+      "size": 0,
+      "narHash": "1ed54db4179790355306e4c18cd9fa8769d98974b942c90e39d26b613f476393",
+      "narSize": 154568,
+      "fileHash": "a4392fbd375e51cf4767a7f4094a3494216db77b7b37f239a568163a02c475d3",
+      "fileSize": 56156,
+      "references": [
+        "5l5wsn4qxkw90h6sxxz43gbnar7w5x8s-fontconfig-2.17.1-lib",
+        "b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w-freetype-2.13.3",
+        "dgjd3hf8ny62vbjg10w64x4jwm7cv81k-libxrender-0.9.12",
+        "ja09m2gfni7pqk4bsrhjb8y9cq74rspp-libx11-1.8.12",
+        "r2av6qwa7rqrwicbva1nrhmxlks8sphg-libxft-2.3.9",
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
@@ -983,6 +1741,19 @@
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
+    "/nix/store/s34rfsb54v46a70n7g9kcx65nhdpgvzf-libvmaf-3.0.0": {
+      "url": "nar/0bcxxsm7ypn32rmsxgxgk662sspq5zblbliy3w7fxy9fvz0qs6bv.nar.xz",
+      "hash": "s34rfsb54v46a70n7g9kcx65nhdpgvzf",
+      "size": 0,
+      "narHash": "e7459fc1a10fc168eeb0ca81b7a14100c73d4fa4754e92333985f1641dc90f6b",
+      "narSize": 2759856,
+      "fileHash": "7b198dc1df2ef9ee0e1f3ed245d72ff86a2d8c99afbfae6b16c35e7faaee9d2d",
+      "fileSize": 243944,
+      "references": [
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/s7vmxmhkq439cjb7ag9w198p6dk7kl0w-zstd-1.5.7": {
       "url": "nar/0gisw9n4p3lss3jc74rvg4kdkl1yq55xp0pbkvl88k3nqkmq4xkm.nar.xz",
       "hash": "s7vmxmhkq439cjb7ag9w198p6dk7kl0w",
@@ -993,6 +1764,34 @@
       "fileSize": 374864,
       "references": [
         "s7vmxmhkq439cjb7ag9w198p6dk7kl0w-zstd-1.5.7",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50": {
+      "url": "nar/1chsfxwxf4b3r1p6z3jxy2dxs7pxkdlbkxaawgdf41w8pr21cc84.nar.xz",
+      "hash": "s8md611ry6w14m4awmgivld52ym8s3b2",
+      "size": 0,
+      "narHash": "a1510c6499b35be4c280476e7d02be12ff8cc8e168c008c1c555476795a391b3",
+      "narSize": 267504,
+      "fileHash": "04311644be8807e2dae34af5b9689bfd1edd9bf05d8e6f6ec86311d779771ab2",
+      "fileSize": 104044,
+      "references": [
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/sdbzh44az4p0gglfvlxnb6v9dbzz9rg2-graphite2-1.3.14": {
+      "url": "nar/1jsyjl9zq1vgfzm5dz481fwj0ad4vw0d9xr3f6ggdfhy3nkknjgc.nar.xz",
+      "hash": "sdbzh44az4p0gglfvlxnb6v9dbzz9rg2",
+      "size": 0,
+      "narHash": "5681266ec513b06917c9adf82c8446808a68b370bf468e82fc4f188dcde2d463",
+      "narSize": 233464,
+      "fileHash": "ec493ba71d1ebaf69e7123f7d400dfa42920b90b88fc56ea776f07fc13955ecb",
+      "fileSize": 86528,
+      "references": [
+        "sdbzh44az4p0gglfvlxnb6v9dbzz9rg2-graphite2-1.3.14",
         "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
@@ -1031,6 +1830,49 @@
       "fileSize": 322672,
       "references": [
         "v8czfabwiry1aik0j3b4mqkqvn7vnxfi-brotli-1.1.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/vbvbbi2r5s4wsxsmj2fyflrldzb52dmb-libaom-3.12.1": {
+      "url": "nar/09ygkhy6jl3b0hfwphlh5awr27s9v9n7lzwicm3mlva4y2rnyyxk.nar.xz",
+      "hash": "vbvbbi2r5s4wsxsmj2fyflrldzb52dmb",
+      "size": 0,
+      "narHash": "030238875330781f27a7d16a8140bc8c56bfface24f5ccbfaf10d6a6d8a5e8c7",
+      "narSize": 8198792,
+      "fileHash": "b37b6fb3f0446d5a4765917f7a6cda491f91b92a90c2cb1d046b50693c9ccf27",
+      "fileSize": 2426620,
+      "references": [
+        "s34rfsb54v46a70n7g9kcx65nhdpgvzf-libvmaf-3.0.0",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/vhjmrvlidmkv68ml2xq026r96vd5m6yy-djvulibre-3.5.29-lib": {
+      "url": "nar/0smv6y7j1hwp87nzpybhifzikl8ks3f8s576fbbc2c0g7wvhjbbz.nar.xz",
+      "hash": "vhjmrvlidmkv68ml2xq026r96vd5m6yy",
+      "size": 0,
+      "narHash": "9e48fc9d3985d608bb194008a6684b256d23a617a626036f86d9623b6be1f6dd",
+      "narSize": 2172976,
+      "fileHash": "7f2d09373f0f30c1d672e6148ddcd013d119bf8b70f9fbed4197c3208f37bb6a",
+      "fileSize": 643512,
+      "references": [
+        "hyzfrys4gr0pn9r7w57fnf8xmjq481yp-djvulibre-3.5.29",
+        "li2pfjskp7ijvs29bx2077b6ggq42v0k-libjpeg-turbo-3.1.2",
+        "vhjmrvlidmkv68ml2xq026r96vd5m6yy-djvulibre-3.5.29-lib",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/vzdwrad5hpib85pa48bkkwniika2phxh-libdatrie-2019-12-20-lib": {
+      "url": "nar/0zsi3k8vb5hh6hi3gb8lag97jz7if5yqwivygvgmzzhy7bnj8ck3.nar.xz",
+      "hash": "vzdwrad5hpib85pa48bkkwniika2phxh",
+      "size": 0,
+      "narHash": "49642b64903ccab9ce0ad127edd532c4aada972ab78ac45d9a4a757086087da2",
+      "narSize": 43184,
+      "fileHash": "633224ed3a1efe5fdf7e7e478e7d71f17c79d25314ad3722341096b5d11c517f",
+      "fileSize": 13480,
+      "references": [
+        "vzdwrad5hpib85pa48bkkwniika2phxh-libdatrie-2019-12-20-lib",
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
@@ -1083,6 +1925,55 @@
       "fileSize": 126028,
       "references": null
     },
+    "/nix/store/xdckbi96kj51j8qxbj2m6bag3v83hn8q-imagemagick-7.1.2-8": {
+      "url": "nar/1cndamqp4l1w0s4qwhb2q2dmq0m2gixdlnmvw3s3ypg8c108bflm.nar.xz",
+      "hash": "xdckbi96kj51j8qxbj2m6bag3v83hn8q",
+      "size": 0,
+      "narHash": "8ec660326968286f9ced79c724d94b101230b18b2178ba7432ad7e02608c08e4",
+      "narSize": 8253544,
+      "fileHash": "95ba854060e85d3ff4e0bb5ada7a7ca2025c9bc062418e89063c50727155cdb2",
+      "fileSize": 2363808,
+      "references": [
+        "01ddsmlfxa22al7yxasdj8rvm72b275m-libheif-1.20.2-lib",
+        "0ci3da6db19gckz0i5j3br992cspvlz1-cairo-1.18.4",
+        "0rfz69vp1nl0q2hxzig20hc60sk72z62-curl-8.17.0-bin",
+        "17djp5v30333dlf5g70i4hs1mb4qlxbd-libtiff-4.7.1",
+        "21qjklkkzc43fg5351hw38dwyi5vycrv-imath-3.2.1",
+        "25rmy0ayvxrdk50r38v37xyxcmk71n00-openexr-3.3.5",
+        "2cvndn3mmkpp148rd9njqkj21k9w0vyz-openjpeg-2.5.4",
+        "2ryq506h3bjvkrbydqjrr5b4id9m63a3-pango-1.57.0",
+        "3k8fgdy2mm7ql01n9nk5hpn9lvp6vy0f-potrace-1.16",
+        "49jajz5qx6v8dad3fhkr1nrzw9lk8a6p-libice-1.1.2",
+        "55071y2xjibw8f317scvlg788w31k7k8-libxext-1.3.6",
+        "58pjr5984m7qd4r1f9f1h92yi50a0gnj-liblqr-1-0.4.2",
+        "5l5wsn4qxkw90h6sxxz43gbnar7w5x8s-fontconfig-2.17.1-lib",
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "6k3r9l6kxq712knqhrv0zghnskr4gk2m-libjxl-0.11.1",
+        "8mk1lafnnrx0a6lvjh69afm8w3i4pvqx-harfbuzz-12.1.0",
+        "b1dsw4p8nqs0dj7a5jdknd7w34559g86-fftw-double-3.3.10",
+        "b6rhgkvrwzq0bzfpaw79b60i1bfbhk3w-freetype-2.13.3",
+        "bcv98jffnvqxvyncf1bayz50r9wj7g3q-libwebp-1.6.0",
+        "cfnas28yx8ni9izjmk3f9hgwzin798nl-gdk-pixbuf-2.44.4",
+        "d98hncrshrqh4z28kj3bn9x5bqfqcahx-libxt-1.3.1",
+        "imad8dvhp77h0pjbckp6wvmnyhp8dpgg-coreutils-9.8",
+        "isd5fqz1qflqv3339zfaqq46q14bqf0a-libraqm-0.10.3",
+        "ja09m2gfni7pqk4bsrhjb8y9cq74rspp-libx11-1.8.12",
+        "jcr97i4l3gqxyy6x3rb5yjwwxhi4454l-libxml2-2.15.1",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "li2pfjskp7ijvs29bx2077b6ggq42v0k-libjpeg-turbo-3.1.2",
+        "ligc3sv7wkfc81fjpbpm9ypcznkx7j56-lcms2-2.17",
+        "pflha0dwwfqb7m34jginsvm56arz5wia-libraw-0.21.4-lib",
+        "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "v8czfabwiry1aik0j3b4mqkqvn7vnxfi-brotli-1.1.0-lib",
+        "vhjmrvlidmkv68ml2xq026r96vd5m6yy-djvulibre-3.5.29-lib",
+        "xdckbi96kj51j8qxbj2m6bag3v83hn8q-imagemagick-7.1.2-8",
+        "xgavznqg1ay2hycpp7yy9ia1n751jcla-bzip2-1.0.8",
+        "xk3x9567nwma79iim3ar1ixl0rcf7449-libsm-1.2.6",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66",
+        "yba4slcxfgpwviaiji43gyq8skvjm4y1-librsvg-2.61.3"
+      ]
+    },
     "/nix/store/xgavznqg1ay2hycpp7yy9ia1n751jcla-bzip2-1.0.8": {
       "url": "nar/0qijn1xfix04va6f1ns3w0mnnsh9417q6jw14rpn5mzmh0n7i99p.nar.xz",
       "hash": "xgavznqg1ay2hycpp7yy9ia1n751jcla",
@@ -1126,6 +2017,21 @@
         "xhy6fkifzmd664lk2s1w1zkk7r5khc5w-perl5.40.0-HTTP-Message-6.45"
       ]
     },
+    "/nix/store/xk3x9567nwma79iim3ar1ixl0rcf7449-libsm-1.2.6": {
+      "url": "nar/0ydhgq7jwbz2d9pr5z127lkgvml4r50j64y5xbl49s90fnwvkxcd.nar.xz",
+      "hash": "xk3x9567nwma79iim3ar1ixl0rcf7449",
+      "size": 0,
+      "narHash": "62bfc16ba404a0ee34b67302184e3c8c1ef968c7ec22769a290a70aa8d493da4",
+      "narSize": 45656,
+      "fileHash": "8df5b9b97520e944e8eac5132341c984d6fd263d22fc926f6ae22f2e0f7eb079",
+      "fileSize": 14408,
+      "references": [
+        "49jajz5qx6v8dad3fhkr1nrzw9lk8a6p-libice-1.1.2",
+        "mzl19fy0j4fl395z3pbkwxcmkxi1733v-util-linux-minimal-2.41.2-lib",
+        "xk3x9567nwma79iim3ar1ixl0rcf7449-libsm-1.2.6",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
     "/nix/store/xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib": {
       "url": "nar/0287z2wv85bcnba0hfmysmsq2dwakav96l5shsq2zrlv2a5bwwh7.nar.xz",
       "hash": "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri",
@@ -1137,6 +2043,19 @@
       "references": [
         "shs2lyjm5yv7fmg4pwyvrlv9zr4macmv-gcc-14.3.0-libgcc",
         "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/xnaf2w53yacjg7h3127ks7gf61pcs3n8-libselinux-3.8.1": {
+      "url": "nar/1aks8r9hnvmk8pr547mrfrsjzx0bcniik9q1nrvw8hkhz4igysmi.nar.xz",
+      "hash": "xnaf2w53yacjg7h3127ks7gf61pcs3n8",
+      "size": 0,
+      "narHash": "3b2630a286076f48c489dbdb685807f79dbc3abe1c7509a27d8678dac195cc97",
+      "narSize": 703176,
+      "fileHash": "b16aff22f97042c477b601a719a3650bf42f7576b91e52f245b36e0b53467aaa",
+      "fileSize": 118376,
+      "references": [
+        "6y07blp88mrgn05wxbif8yzmd0g2ss4x-pcre2-10.46",
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },
@@ -1152,6 +2071,28 @@
         "2a3izq4hffdd9r9gb2w6q2ibdc86kss6-xgcc-14.3.0-libgcc",
         "hxcmad417fd8ql9ylx96xpak7da06yiv-libidn2-2.3.8",
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/yba4slcxfgpwviaiji43gyq8skvjm4y1-librsvg-2.61.3": {
+      "url": "nar/187hi8qdrllmhvb0nm7i2z9w3dgfhll9hw346p430q6ch7zc1jyg.nar.xz",
+      "hash": "yba4slcxfgpwviaiji43gyq8skvjm4y1",
+      "size": 0,
+      "narHash": "3e636f389a41a7f50cc863813df3be52bb089c4d39a63c33f94e349c4ebc84d5",
+      "narSize": 16347720,
+      "fileHash": "cfcbc0fe81cc6030c8356470982885eeb5c1d317f1540bd68695d2dc308af0a0",
+      "fileSize": 3602908,
+      "references": [
+        "0ci3da6db19gckz0i5j3br992cspvlz1-cairo-1.18.4",
+        "2ryq506h3bjvkrbydqjrr5b4id9m63a3-pango-1.57.0",
+        "5l5wsn4qxkw90h6sxxz43gbnar7w5x8s-fontconfig-2.17.1-lib",
+        "5qdsnc26nv61j5rrw492f19xav2rz45v-glib-2.86.1",
+        "8mk1lafnnrx0a6lvjh69afm8w3i4pvqx-harfbuzz-12.1.0",
+        "cfnas28yx8ni9izjmk3f9hgwzin798nl-gdk-pixbuf-2.44.4",
+        "iblpwrd5gdnpxdqhsc5dyyqqhjcziihh-dav1d-1.5.2",
+        "jcr97i4l3gqxyy6x3rb5yjwwxhi4454l-libxml2-2.15.1",
+        "xm08aqdd7pxcdhm0ak6aqb1v7hw5q6ri-gcc-14.3.0-lib",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66",
+        "yba4slcxfgpwviaiji43gyq8skvjm4y1-librsvg-2.61.3"
       ]
     },
     "/nix/store/yf2zrw5ynsgqn9af8qxfky93vc1vdcab-perl5.40.0-File-Listing-6.16": {
@@ -1191,6 +2132,19 @@
       "references": [
         "snc06zyambwrnbgzsn0hxzq6rlgwcqj2-perl5.40.0-IO-Socket-SSL-2.083",
         "z255fkvmkg7gg4lkk1vjpbmnss6g5fgc-perl5.40.0-Net-SMTP-SSL-1.04"
+      ]
+    },
+    "/nix/store/z34g38hzz56f3c0pjxs2m90s51ga1y1x-libxdmcp-1.1.5": {
+      "url": "nar/0ccq88mvb28ph8y0slgnjqv663w1n4bxcxlvljw1sbnsi8qacqmn.nar.xz",
+      "hash": "z34g38hzz56f3c0pjxs2m90s51ga1y1x",
+      "size": 0,
+      "narHash": "4f18d0cd69dc84abf5a511103b2ec77356a9825b173a32604f335deb01c8ba5e",
+      "narSize": 31912,
+      "fileHash": "b662a6308ada2e1db8a49b76d617b1810f633696f6510d3c821789b52b429831",
+      "fileSize": 8576,
+      "references": [
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66",
+        "z34g38hzz56f3c0pjxs2m90s51ga1y1x-libxdmcp-1.1.5"
       ]
     },
     "/nix/store/zsq35qbs90c1nkh51w3qkmp7x2zpgqw7-perl5.40.0-TimeDate-2.33": {
