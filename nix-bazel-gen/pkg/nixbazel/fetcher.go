@@ -47,6 +47,7 @@ func (f *Fetcher) FetchAllFromLock(lock *Lockfile) error {
 	}
 
 	fmt.Printf("Fetching %d unique store paths...\n", len(uniquePaths))
+	os.Stdout.Sync()
 
 	// Download and unpack
 	for _, info := range uniquePaths {
@@ -199,9 +200,9 @@ func (f *Fetcher) downloadAndUnpack(ctx context.Context, info *NarInfo) error {
 	storeName := filepath.Base(info.StorePath)
 	destDir := filepath.Join(f.outDir, storeName)
 
-	if _, err := os.Stat(destDir); err == nil {
-		fmt.Printf("Already exists: %s\n", destDir)
-		return nil
+	// Force unpack: remove destination if it exists
+	if err := os.RemoveAll(destDir); err != nil {
+		return fmt.Errorf("failed to clean destination %s: %w", destDir, err)
 	}
 
 	fmt.Printf("Downloading %s...\n", info.URL)
@@ -262,6 +263,8 @@ func (f *Fetcher) unpackNar(r io.Reader, destDir string) error {
 				return err
 			}
 		} else if hdr.Mode.IsRegular() {
+			// Remove if exists
+			os.Remove(path)
 			file, err := os.Create(path)
 			if err != nil {
 				return err
@@ -275,6 +278,8 @@ func (f *Fetcher) unpackNar(r io.Reader, destDir string) error {
 				os.Chmod(path, 0755)
 			}
 		} else if hdr.Mode&fs.ModeSymlink != 0 {
+			// Remove if exists
+			os.Remove(path)
 			if err := os.Symlink(hdr.LinkTarget, path); err != nil {
 				return err
 			}
@@ -283,7 +288,7 @@ func (f *Fetcher) unpackNar(r io.Reader, destDir string) error {
 	return nil
 }
 
-func (f *Fetcher) UnpackAndPatch(archivePath, storePath string, refs []string) error {
+func (f *Fetcher) Unpack(archivePath, storePath string) error {
 	// We unpack to f.outDir (repo root).
 	// The NAR contains the directory structure (storePathBase/...).
 	// So binaries will be in f.outDir/storePathBase/bin.
@@ -297,16 +302,32 @@ func (f *Fetcher) UnpackAndPatch(archivePath, storePath string, refs []string) e
 
 	fmt.Printf("Unpacking %s to %s...\n", archivePath, actualStoreDir)
 
-	file, err := os.Open(archivePath)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
+	var r io.Reader
 
-	var r io.Reader = file
+	if strings.HasPrefix(archivePath, "http://") || strings.HasPrefix(archivePath, "https://") {
+		// Download from URL
+		resp, err := http.Get(archivePath)
+		if err != nil {
+			return fmt.Errorf("failed to download %s: %w", archivePath, err)
+		}
+		defer resp.Body.Close()
+		if resp.StatusCode != http.StatusOK {
+			return fmt.Errorf("download failed: %d", resp.StatusCode)
+		}
+		r = resp.Body
+	} else {
+		// Open local file
+		file, err := os.Open(archivePath)
+		if err != nil {
+			return err
+		}
+		defer file.Close()
+		r = file
+	}
+
 	// Assume xz
 	cmd := exec.Command("xz", "-d", "-c")
-	cmd.Stdin = file
+	cmd.Stdin = r
 	pipe, err := cmd.StdoutPipe()
 	if err != nil {
 		return err
@@ -314,10 +335,13 @@ func (f *Fetcher) UnpackAndPatch(archivePath, storePath string, refs []string) e
 	if err := cmd.Start(); err != nil {
 		return err
 	}
-	r = pipe
 
-	if err := f.unpackNar(r, actualStoreDir); err != nil {
+	if err := f.unpackNar(pipe, actualStoreDir); err != nil {
 		return err
+	}
+
+	if err := cmd.Wait(); err != nil {
+		return fmt.Errorf("xz failed: %w", err)
 	}
 
 	return nil

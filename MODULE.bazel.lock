@@ -153,7 +153,7 @@
     "//:nix_package.bzl%nix_extension": {
       "general": {
         "bzlTransitiveDigest": "XwMy6tK+VAFPr49sfv0T8/nsUL9OjFu12M/sk+JnJDM=",
-        "usagesDigest": "doN3QaXPqNpPqyubIHsR4oEl0G1HewkssVe+m1dlUIU=",
+        "usagesDigest": "UhHNWAGbigdBhjuoWQx/yum9crjmLNYQdRgAfq++U8w=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -162,7 +162,7 @@
             "repoRuleId": "@@//:nix_package.bzl%nix_package",
             "attributes": {
               "lockfile": "@@//:nix_deps.lock.json",
-              "packages_json": "{\"repositories\":{\"curl\":{\"entrypoint\":\"bin/curl\",\"package\":\"nixpkgs.curl.x86_64-linux\"},\"git\":{\"entrypoint\":\"bin/git\",\"package\":\"nixpkgs.git.x86_64-linux\"},\"hello\":{\"entrypoint\":\"\",\"package\":\"nixpkgs.hello.x86_64-linux\"},\"imagemagick\":{\"entrypoint\":\"bin/magick\",\"package\":\"nixpkgs.imagemagick.x86_64-linux\"},\"python3\":{\"entrypoint\":\"bin/python3\",\"package\":\"nixpkgs.python3.x86_64-linux\"}}}",
+              "packages_json": "{\"repositories\":{\"git\":{\"entrypoint\":\"bin/git\",\"package\":\"nixpkgs.git.x86_64-linux\"},\"hello\":{\"entrypoint\":\"\",\"package\":\"nixpkgs.hello.x86_64-linux\"},\"imagemagick\":{\"entrypoint\":\"bin/magick\",\"package\":\"nixpkgs.imagemagick.x86_64-linux\"},\"python3\":{\"entrypoint\":\"bin/python3\",\"package\":\"nixpkgs.python3.x86_64-linux\"},\"wget\":{\"entrypoint\":\"bin/wget\",\"package\":\"nixpkgs.wget.x86_64-linux\"}}}",
               "channel": ""
             }
           }

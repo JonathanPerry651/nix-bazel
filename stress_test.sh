@@ -4,7 +4,7 @@ set -e
 echo "Testing Python 3..."
 $1 -c "import sys; print(f'Python {sys.version}')"
 
-echo "Testing Curl..."
+echo "Testing Wget..."
 $2 --version | head -n 1
 
 echo "Testing ImageMagick..."

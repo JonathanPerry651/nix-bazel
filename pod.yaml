@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nix-bazel-builder
+spec:
+  hostUsers: false
+  containers:
+  - name: builder
+    image: debian:bookworm
+    command: ["sleep", "infinity"]
+    securityContext:
+      privileged: true
+      seccompProfile:
+        type: Unconfined
+  restartPolicy: Never

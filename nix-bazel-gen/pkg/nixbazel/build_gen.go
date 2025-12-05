@@ -27,6 +27,7 @@ func (f *Fetcher) GenerateBuildFiles(lockFile, channel string) error {
 			StorePath:   storePath,
 			References:  node.References,
 			Compression: "xz",
+			FileHash:    node.FileHash,
 		}
 	}
 
@@ -50,53 +51,102 @@ func (f *Fetcher) generateBuildFiles(lock Lockfile, uniquePaths map[string]*NarI
 			return err
 		}
 
-		fmt.Fprintf(file, "load(\"@nix_deps//:patchelf.bzl\", \"nix_patchelf\")\n\n")
+		fmt.Fprintf(file, "load(\"@nix_deps//:nix_unpack.bzl\", \"nix_unpack\")\n")
+		fmt.Fprintf(file, "load(\"@nix_deps//:nix_root.bzl\", \"nix_root\")\n")
+		fmt.Fprintf(file, "load(\"@nix_deps//:nix_bwrap.bzl\", \"nix_bwrap_run\")\n\n")
 		fmt.Fprintf(file, "package(default_visibility = [\"//visibility:public\"])\n\n")
 
 		// Calculate dependencies (transitive closure)
 		var deps []string
-		var depNames []string
+		var storePaths []string
 
 		transitiveDeps := getTransitiveClosure(storePath, lock.Packages)
 
+		// Dependencies for the filegroup (other packages)
 		for _, ref := range transitiveDeps {
 			refName := filepath.Base(ref)
-			// Dependency format: // <refName> : <refName>
 			deps = append(deps, fmt.Sprintf("\"//%s:%s\"", refName, refName))
-			depNames = append(depNames, fmt.Sprintf("\"%s\"", refName))
 		}
 
-		// Filegroup for the whole store path
-		fmt.Fprintf(file, "filegroup(\n")
-		fmt.Fprintf(file, "    name = \"%s\",\n", storeName)
-		fmt.Fprintf(file, "    srcs = glob([\"**\"], exclude = [\"BUILD.bazel\"]),\n")
-		if len(deps) > 0 {
-			fmt.Fprintf(file, "    data = [%s],\n", strings.Join(deps, ", "))
+		// Store paths for bwrap (self + transitive)
+		// Self
+		storePaths = append(storePaths, fmt.Sprintf("\"%s\"", storePath))
+		// Transitive
+		for _, ref := range transitiveDeps {
+			storePaths = append(storePaths, fmt.Sprintf("\"%s\"", ref))
 		}
+
+		// nix_unpack target
+		// We assume the NAR file is available as a file in the repo rule
+		// The repo rule should expose it.
+		// Let's assume the repo rule downloads it to "nar/<hash>.nar.xz" or similar.
+		// But wait, the repo rule is generating THIS file.
+		// The repo rule has the NAR file.
+		// We can refer to it if the repo rule exposes it.
+		// Let's assume the repo rule puts it in `downloads/<hash>` and exposes it via exports_files or similar.
+		// Or better, we can assume the repo rule generates a filegroup for it?
+
+		// Actually, if we are inside the repo rule, we can refer to the file by its path relative to the BUILD file.
+		// The BUILD file is in `repo_root/<store_name>/BUILD.bazel`.
+		// The NAR file is likely in `repo_root/downloads/<hash>`.
+		// So path is `../downloads/<hash>`.
+
+		// narPath := fmt.Sprintf("../downloads/%s", uniquePaths[storePath].URL)
+		// We need the file hash or whatever we used to save it.
+		// In nix_package.bzl we used `node["fileHash"]`.
+		// We don't have fileHash in NarInfo struct here yet.
+		// We need to pass it.
+
+		// For now, let's assume we can get it.
+		// Wait, uniquePaths is map[string]*NarInfo. NarInfo has URL.
+		// In `nix_package.bzl`, we save to `downloads/fileHash`.
+		// We need to pass fileHash to `generateBuildFiles`.
+
+		fmt.Fprintf(file, "nix_unpack(\n")
+		fmt.Fprintf(file, "    name = \"%s\",\n", storeName)
+		fmt.Fprintf(file, "    nar_file = \"//:downloads/%s\",\n", uniquePaths[storePath].FileHash)
+		fmt.Fprintf(file, "    store_name = \"%s\",\n", storeName)
 		fmt.Fprintf(file, ")\n\n")
 
 		// Binaries
-		binDir := filepath.Join(packageDir, "bin")
-		entries, err := os.ReadDir(binDir)
-		if err == nil {
-			for _, entry := range entries {
-				if !entry.IsDir() {
-					binName := entry.Name()
-					// Target name: binName (e.g. git)
-					// It's safe to use binName because storeName is usually long and distinct
+		// This is the catch.
+		// If we use nix_unpack, we don't know what binaries are inside until build time.
+		// But we need to generate targets for them.
 
-					fmt.Fprintf(file, "nix_patchelf(\n")
-					fmt.Fprintf(file, "    name = \"%s\",\n", binName)
-					fmt.Fprintf(file, "    src = \"bin/%s\",\n", binName)
-					fmt.Fprintf(file, "    data = [\":%s\"],\n", storeName)
-					if len(deps) > 0 {
-						fmt.Fprintf(file, "    deps = [%s],\n", strings.Join(deps, ", "))
-						fmt.Fprintf(file, "    nix_store_names = [%s],\n", strings.Join(depNames, ", "))
-					}
-					fmt.Fprintf(file, ")\n\n")
-				}
-			}
+		// Solution: We rely on the `Entrypoint` from the lockfile (if available) or we just expose the whole thing?
+		// Binaries
+		// We assume standard bin/ directory structure in the unpacked package
+		// Since we haven't unpacked yet, we can't scan the directory.
+		// However, the user asked for "top level entrypoints".
+		// If we can't scan, we can't know what binaries exist.
+		// BUT, we can generate a nix_root target for the package itself?
+		// Or we can rely on the entrypoint from lockfile if present.
+
+		// Wait, the user said "make a rule for the top level entrypoints".
+		// If I can't scan, I can't generate targets for arbitrary binaries.
+		// But I CAN generate a single `nix_root` target for the package, which includes its closure.
+		// Then the user can run something inside it.
+
+		// Let's generate a `nix_root` target named `root` (or `storeName_root`) for every package.
+		// This target will build the symlink forest for that package's closure.
+
+		fmt.Fprintf(file, "nix_root(\n")
+		fmt.Fprintf(file, "    name = \"root\",\n")
+		// Deps: self + transitive deps
+		// We need to refer to the nix_unpack targets.
+		// Self: :storeName
+		// Transitive: //refName:refName
+
+		var rootDeps []string
+		rootDeps = append(rootDeps, fmt.Sprintf("\":%s\"", storeName))
+		for _, ref := range transitiveDeps {
+			refName := filepath.Base(ref)
+			rootDeps = append(rootDeps, fmt.Sprintf("\"//%s:%s\"", refName, refName))
 		}
+
+		fmt.Fprintf(file, "    deps = [%s],\n", strings.Join(rootDeps, ", "))
+		fmt.Fprintf(file, ")\n\n")
+
 		file.Close()
 	}
 
@@ -112,30 +162,22 @@ func (f *Fetcher) generateBuildFiles(lock Lockfile, uniquePaths map[string]*NarI
 
 	fmt.Fprintf(file, "package(default_visibility = [\"//visibility:public\"])\n\n")
 
+	// Explicitly export downloaded NAR files
+	var downloadedFiles []string
+	for _, info := range uniquePaths {
+		downloadedFiles = append(downloadedFiles, fmt.Sprintf("\"downloads/%s\"", info.FileHash))
+	}
+	// Also export the fetch tool
+	downloadedFiles = append(downloadedFiles, "\"nix-bazel-fetch\"")
+
+	fmt.Fprintf(file, "exports_files([%s])\n\n", strings.Join(downloadedFiles, ", "))
+
 	for repoName, repoLock := range lock.Repositories {
 		storePath := repoLock.StorePath
 		storeName := filepath.Base(storePath)
 
-		// Alias for the filegroup
-		// If the user asked for "git", they might expect the binary "git" if it exists,
-		// or the filegroup if it's a library.
-
-		target := fmt.Sprintf("//%s:%s", storeName, storeName) // Default to filegroup
-
-		if repoLock.Entrypoint != "" {
-			// User specified entrypoint, use it
-			// We assume the entrypoint binary name matches the basename of the entrypoint path
-			// e.g. bin/git -> git
-			entrypointName := filepath.Base(repoLock.Entrypoint)
-			target = fmt.Sprintf("//%s:%s", storeName, entrypointName)
-		} else {
-			// Let's check if a binary with the same name exists in that package.
-			binPath := filepath.Join(f.outDir, storeName, "bin", repoName)
-			if _, err := os.Stat(binPath); err == nil {
-				// Binary exists, alias to it
-				target = fmt.Sprintf("//%s:%s", storeName, repoName)
-			}
-		}
+		// Alias for the nix_root target
+		target := fmt.Sprintf("//%s:root", storeName)
 
 		fmt.Fprintf(file, "alias(\n")
 		fmt.Fprintf(file, "    name = \"%s\",\n", repoName)

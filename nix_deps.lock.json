@@ -1,9 +1,5 @@
 {
   "repositories": {
-    "curl": {
-      "storePath": "/nix/store/8idis3j5l13c3x74jl8xly0k4qyk9mx6-curl-8.17.0",
-      "entrypoint": "bin/curl"
-    },
     "git": {
       "storePath": "/nix/store/4qhdhmi7pzgad0zfd7c5lsg235mbf9hv-git-2.51.2",
       "entrypoint": "bin/git"
@@ -18,6 +14,10 @@
     "python3": {
       "storePath": "/nix/store/3lll9y925zz9393sa59h653xik66srjb-python3-3.13.9",
       "entrypoint": "bin/python3"
+    },
+    "wget": {
+      "storePath": "/nix/store/bhkfrdvapl4zw304qiyqdlxcfr0hdan6-wget-1.25.0",
+      "entrypoint": "bin/wget"
     }
   },
   "packages": {
@@ -885,6 +885,24 @@
         "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
         "li2pfjskp7ijvs29bx2077b6ggq42v0k-libjpeg-turbo-3.1.2",
         "s8md611ry6w14m4awmgivld52ym8s3b2-libpng-apng-1.6.50",
+        "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
+      ]
+    },
+    "/nix/store/bhkfrdvapl4zw304qiyqdlxcfr0hdan6-wget-1.25.0": {
+      "url": "nar/1wnzmv6i2jf0v9rjq7f14dgj6x8bwqwc7yfpi5y6a7j09lchk463.nar.xz",
+      "hash": "bhkfrdvapl4zw304qiyqdlxcfr0hdan6",
+      "size": 0,
+      "narHash": "cb85a9aa07450d838d2cf9be88e60f1d349f730949a53b655e61ac3c7236561a",
+      "narSize": 3699392,
+      "fileHash": "c39009194d401e657c89d7f9c338e60b75235f23c11d2c73dac04911cdaedff2",
+      "fileSize": 693124,
+      "references": [
+        "61i74yjkj9p1qphfl7018ja4sdwkipx0-openssl-3.6.0",
+        "6y07blp88mrgn05wxbif8yzmd0g2ss4x-pcre2-10.46",
+        "bhkfrdvapl4zw304qiyqdlxcfr0hdan6-wget-1.25.0",
+        "hxcmad417fd8ql9ylx96xpak7da06yiv-libidn2-2.3.8",
+        "l7xwm1f6f3zj2x8jwdbi8gdyfbx07sh7-zlib-1.3.1",
+        "mzl19fy0j4fl395z3pbkwxcmkxi1733v-util-linux-minimal-2.41.2-lib",
         "xx7cm72qy2c0643cm1ipngd87aqwkcdp-glibc-2.40-66"
       ]
     },

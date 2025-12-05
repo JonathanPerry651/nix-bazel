@@ -27,24 +27,9 @@ def _nix_package_impl(repository_ctx):
                 sha256 = node["fileHash"],
             )
 
-            # Unpack and patch
-            # We need to pass references for RPATH
-            refs_list = node.get("references") or []
-            refs = ",".join(refs_list)
+            # Unpacking is now done by nix_unpack rule at build time
+            pass
             
-            args = [
-                fetch_tool,
-                "--archive", str(download_path),
-                "--store-path", store_path,
-                "--out", repository_ctx.path("."),
-            ]
-            if refs:
-                args.extend(["--refs", refs])
-
-            result = repository_ctx.execute(args)
-            if result.return_code != 0:
-                fail("Failed to unpack %s: \n%s\n%s" % (store_path, result.stdout, result.stderr))
-
         # 4. Generate BUILD files
         if repository_ctx.attr.packages_json:
             repository_ctx.file("packages.json", repository_ctx.attr.packages_json)
@@ -58,8 +43,14 @@ def _nix_package_impl(repository_ctx):
             if result.return_code != 0:
                 fail("Failed to generate BUILD files: \n%s\n%s" % (result.stdout, result.stderr))
 
-        # Copy patchelf.bzl
-        repository_ctx.symlink(Label("//:patchelf.bzl"), "patchelf.bzl")
+        # Copy nix_bwrap.bzl, nix_unpack.bzl, nix_providers.bzl
+        repository_ctx.symlink(Label("//:nix_bwrap.bzl"), "nix_bwrap.bzl")
+        repository_ctx.symlink(Label("//:nix_unpack.bzl"), "nix_unpack.bzl")
+        repository_ctx.symlink(Label("//:nix_providers.bzl"), "nix_providers.bzl")
+        repository_ctx.symlink(Label("//:nix_root.bzl"), "nix_root.bzl")
+        
+        # Copy tools
+        repository_ctx.symlink(fetch_tool, "nix-bazel-fetch")
 
     else:
         fail("Lockfile is required for this mode")

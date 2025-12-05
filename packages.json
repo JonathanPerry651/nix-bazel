@@ -1,0 +1,23 @@
+{
+    "repositories": {
+        "git": {
+            "package": "nixpkgs.git.x86_64-linux",
+            "entrypoint": "bin/git"
+        },
+        "python3": {
+            "package": "nixpkgs.python3.x86_64-linux",
+            "entrypoint": "bin/python3"
+        },
+        "wget": {
+            "package": "nixpkgs.wget.x86_64-linux",
+            "entrypoint": "bin/wget"
+        },
+        "imagemagick": {
+            "package": "nixpkgs.imagemagick.x86_64-linux",
+            "entrypoint": "bin/magick"
+        },
+        "hello": {
+            "package": "nixpkgs.hello.x86_64-linux"
+        }
+    }
+}

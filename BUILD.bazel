@@ -1,0 +1,11 @@
+exports_files([
+    "nix_root.bzl",
+    "nix_unpack.bzl",
+    "nix_providers.bzl",
+    "nix_bwrap.bzl",
+])
+
+alias(
+    name = "nix-bazel-fetch",
+    actual = "//nix-bazel-gen/cmd/nix-bazel-fetch",
+)
